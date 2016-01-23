@@ -183,7 +183,6 @@ public class Main extends BasicGame {
 				grphcs.drawString("Scene " + scene, 710, 10);
 				grphcs.setColor(Color.black);
 				grphcs.drawString(StringSeparator.separeString(str, 85), 10, 48);
-
 			}
 		}
 	}
