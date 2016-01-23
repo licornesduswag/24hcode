@@ -21,35 +21,53 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package fr.licornesduswag.hcode.data;
 
 import fr.licornesduswag.hcode.SAX.PieceLoader;
+import io.herrmann.generator.Generator;
 
 /**
  *
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public class TestIterator {
+public class PieceGenerator extends Generator<Object> {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-    	Piece p = PieceLoader.load("../pieces/html/medecinMalgresLui.xml");
-        PieceIterator it = new PieceIterator(p);
-        
-        Object obj;
-        
-        while((obj = it.next()) != null) {
-        	if(obj.getClass().getName().equals("fr.licornesduswag.hcode.data.Scene")){
-        		Scene s = (Scene)obj;
-        		System.out.println(s.getNumero()+" "+obj.getClass().getName());
-        	}
-        	else{
-        		System.out.println(obj.getClass().getName());
-        	}
-        }
+    private Piece piece;
+
+    public PieceGenerator(Piece piece) {
+        this.piece = piece;
     }
     
     
+    
+    @Override
+    protected void run() throws InterruptedException {
+        yield(piece);
+        
+        for (Acte a : piece.getActes()) {
+            yield(a);
+            for(Scene s : a.getScenes()){
+            	yield(s);
+            	for(Dialogue d : s.getDialogues()){
+            		yield(d);
+            		for(Replique r : d.getRepliques()){
+            			yield(r);
+            			for(Contenu c : r.getContenu()){
+            				yield(c);
+            			}
+            		}
+            	}
+            }
+            
+        }
+    }
+
+    public static void main(String[] args) {
+        PieceGenerator pg = new PieceGenerator(PieceLoader.load("../pieces/html/medecinMalgresLui.xml"));
+        
+        for (Object o : pg) {
+            System.out.println(o.getClass().getName());
+        }
+    }
 }

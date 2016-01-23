@@ -55,6 +55,8 @@ public class PieceIterator {
 		this.piece = piece;
 	}    
 
+	
+	
 	public Object next() {
 
 		// Avant tout, on affiche la piece si ce n'est pas encore fait
@@ -69,14 +71,14 @@ public class PieceIterator {
 			return piece.getActes().get(0);
 		}
 
-
+		
 		//première scene 
 		if(!shownScene){
 			shownScene = true;
 			return piece.getActes().get(0).getScenes().get(0);
 		}
 
-/*		//premier dialogue
+		//premier dialogue
 		if(!shownDialogue){
 			shownDialogue = true;
 			return piece.getActes().get(0).getScenes().get(0).getDialogues().get(0);
@@ -94,7 +96,7 @@ public class PieceIterator {
 			return piece.getActes().get(0).getScenes().get(0).getDialogues().get(0).getRepliques().get(0).getContenu().get(0);
 		}
 
-		if(currentActe < piece.getActes().size()){
+		/*if(currentActe < piece.getActes().size()){
 			if(currentScene < piece.getActes().get(currentActe).getScenes().size()){
 				if(currentDialogue < piece.getActes().get(currentActe).getScenes().get(currentScene).getDialogues().size()){
 					if(currentReplique < piece.getActes().get(currentActe).getScenes().get(currentScene).getDialogues().get(currentDialogue).getRepliques().size()){
@@ -145,12 +147,20 @@ public class PieceIterator {
 
 
 
-		/*if (currentActe < piece.getActes().size()) {
-
-
+		if (currentActe < piece.getActes().size()) {
 			if (currentScene < piece.getActes().get(currentActe).getScenes().size()) {
-				// On peut afficher la scène suivante dans l'acte courant
-				return piece.getActes().get(currentActe).getScenes().get(currentScene++);
+				if(currentDialogue < piece.getActes().get(currentActe).getScenes().get(currentDialogue).getDialogues().size()){
+					return piece.getActes().get(currentActe).getScenes().get(currentScene).getDialogues().get(currentDialogue++);
+				}else{
+					currentDialogue = 0;
+					currentScene++;
+					if(currentScene < piece.getActes().get(currentActe).getScenes().size()){
+						// On peut afficher la scène suivante dans l'acte courant
+						return piece.getActes().get(currentActe).getScenes().get(currentScene);
+					}
+				}
+				
+				
 			}
 			else {
 				// Plus de scènes disponibles, on essaye d'afficher l'acte suivant
@@ -165,10 +175,10 @@ public class PieceIterator {
 					return null;
 				}
 			}
-		}*/
+		}
 		
 		
-		if (currentActe < piece.getActes().size()) {
+		/*if (currentActe < piece.getActes().size()) {
 			if (currentScene < piece.getActes().get(currentActe).getScenes().size()) {
 				if(currentDialogue < piece.getActes().get(currentActe).getScenes().get(currentScene).getDialogues().size()){
 					// On peut afficher la scène suivante dans l'acte courant
@@ -194,7 +204,7 @@ public class PieceIterator {
 					return null;
 				}
 			}
-		}
+		}*/
 
 
 
