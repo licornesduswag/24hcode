@@ -38,6 +38,7 @@ public class Replique implements Serializable{
 	}
 
 	private ArrayList<Contenu> contenu;
+	private String parleur;
     
     // Constructeur
 

@@ -98,6 +98,7 @@ public class Main {
         
         dial = new Dialogue(repliques,personnages);
         scene.getDialogues().add(dial);
+        scenes.add(scene);
         System.out.println(piece);
         
         
