@@ -48,14 +48,6 @@ public class Replique implements Serializable{
 		this.parleur = parleur;
 	}
 
-	public String getParleur() {
-		return parleur;
-	}
-
-	public void setParleur(String parleur) {
-		this.parleur = parleur;
-	}
-
 	private ArrayList<Contenu> contenu;
 	private String parleur;
     
@@ -74,6 +66,14 @@ public class Replique implements Serializable{
     public void setContenu(ArrayList<Contenu> contenu) {
         this.contenu = contenu;
     }
+    
+    public String getParleur() {
+		return parleur;
+	}
+
+	public void setParleur(String parleur) {
+		this.parleur = parleur;
+	}
 
     @Override
     public String toString() {

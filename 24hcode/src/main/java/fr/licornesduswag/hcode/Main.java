@@ -25,8 +25,6 @@
 package fr.licornesduswag.hcode;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -35,6 +33,7 @@ import fr.licornesduswag.hcode.data.Contenu;
 import fr.licornesduswag.hcode.data.Dialogue;
 import fr.licornesduswag.hcode.data.Personnage;
 import fr.licornesduswag.hcode.data.Piece;
+import fr.licornesduswag.hcode.data.PieceIterator;
 import fr.licornesduswag.hcode.data.Replique;
 import fr.licornesduswag.hcode.data.Scene;
 import fr.licornesduswag.hcode.data.Serializer;
@@ -45,78 +44,83 @@ import fr.licornesduswag.hcode.data.Texte;
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("Salut !");
-         
-        // Texte
-        Texte txt = new Texte("Roméo, oh Roméo !");
-        
-        //Personnage
-        Personnage perso1 = new Personnage("Roméo", "toto.png", "tata.png");
-        Personnage perso2 = new Personnage("Juliette", "toto.png", "tata.png");
-        
-        // Réplique
-        ArrayList<Contenu> contenus = new ArrayList<>();
-        contenus.add(txt);
-        Replique rep = new Replique(contenus);
-        
-        // Dialogue
-        ArrayList<Replique> repliques = new ArrayList<>();
-        repliques.add(rep);
-        Dialogue dial = new Dialogue(repliques);
-        
-        // Scene
-        ArrayList<Dialogue> dialogues = new ArrayList<>();
-        dialogues.add(dial);
-        Scene scene = new Scene(1, dialogues);
-        
-        // Acte
-        ArrayList<Scene> scenes = new ArrayList<>();
-        scenes.add(scene);
-        Acte acte = new Acte(1, scenes);
-        
-        // Pièce
-        ArrayList<Acte> actes = new ArrayList<>();
-        ArrayList<Personnage> personnages = new ArrayList<>();
-        actes.add(acte);
-        personnages.add(perso1);
-        personnages.add(perso2);
-        Piece piece = new Piece("Romeo et Juliette", actes, personnages);
-        Personnage sgana = new Personnage("sgana", "SganarelleFace"	, "SganarelleAventure");
-        Personnage martine = new Personnage("martine","martineFace","martineAventure");
-        personnages.clear();
-        personnages.add(sgana);
-        personnages.add(martine);
-        repliques = new ArrayList<>();
-        txt = new Texte("Non, je te dis que je n’en veux rien faire, et que c’est à moi de parler et d’être le maître.");
-        contenus = new ArrayList<>();
-        contenus.add(txt);
-        
-        repliques.add(new Replique(contenus));
-        contenus = new ArrayList<>();
-        contenus.add(new Texte("Et je te dis, moi, que je veux que tu vives à ma fantaisie, et ne je ne me suis point mariée avec toi pour souffrir tes fredaines. "));
-        repliques.add(new Replique(contenus));
-        
-        dial = new Dialogue(repliques,personnages);
-        scene.getDialogues().add(dial);
-        scenes.add(scene);
-        System.out.println(piece);
-        
-        
-        
-        
-        
-        
-        //Serializer
-        Serializer serial = new Serializer(piece);
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        try {
+	public static void main(String[] args) {
+		System.out.println("Salut !");
+
+		// Texte
+		Texte txt = new Texte("Roméo, oh Roméo !");
+
+		//Personnage
+		Personnage perso1 = new Personnage("Roméo", "toto.png", "tata.png");
+		Personnage perso2 = new Personnage("Juliette", "toto.png", "tata.png");
+
+		// Réplique
+		ArrayList<Contenu> contenus = new ArrayList<>();
+		contenus.add(txt);
+		Replique rep = new Replique(contenus);
+
+		// Dialogue
+		ArrayList<Replique> repliques = new ArrayList<>();
+		repliques.add(rep);
+		Dialogue dial = new Dialogue(repliques);
+
+		// Scene
+		ArrayList<Dialogue> dialogues = new ArrayList<>();
+		dialogues.add(dial);
+		Scene scene = new Scene(1, dialogues);
+
+		// Acte
+		ArrayList<Scene> scenes = new ArrayList<>();
+		scenes.add(scene);
+		Acte acte = new Acte(1, scenes);
+
+		// Pièce
+		ArrayList<Acte> actes = new ArrayList<>();
+		ArrayList<Personnage> personnages = new ArrayList<>();
+		actes.add(acte);
+		personnages.add(perso1);
+		personnages.add(perso2);
+		Piece piece = new Piece("Romeo et Juliette", actes, personnages);
+		Personnage sgana = new Personnage("sgana", "SganarelleFace"	, "SganarelleAventure");
+		Personnage martine = new Personnage("martine","martineFace","martineAventure");
+		personnages.clear();
+		personnages.add(sgana);
+		personnages.add(martine);
+		repliques = new ArrayList<>();
+		txt = new Texte("Non, je te dis que je n’en veux rien faire, et que c’est à moi de parler et d’être le maître.");
+		contenus = new ArrayList<>();
+		contenus.add(txt);
+
+		repliques.add(new Replique(contenus));
+		contenus = new ArrayList<>();
+		contenus.add(new Texte("Et je te dis, moi, que je veux que tu vives à ma fantaisie, et ne je ne me suis point mariée avec toi pour souffrir tes fredaines. "));
+		repliques.add(new Replique(contenus));
+
+		dial = new Dialogue(repliques,personnages);
+		scene.getDialogues().add(dial);
+		scenes.add(scene);
+		System.out.println(piece);
+
+
+		PieceIterator pi = new PieceIterator(piece);
+		Object obj;
+
+		while((obj = pi.next()) != null) {
+			System.out.println(obj.getClass().getName());
+		}
+
+
+
+		//Serializer
+		Serializer serial = new Serializer(piece);
+		ByteArrayOutputStream output = new ByteArrayOutputStream();
+		try {
 			serial.toZip("test.zip");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        
-        System.out.println(piece);
-    }
+
+		System.out.println(piece);
+	}
 }
