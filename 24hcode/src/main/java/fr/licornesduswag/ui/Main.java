@@ -35,6 +35,7 @@ import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.util.ResourceLoader;
@@ -61,6 +62,7 @@ public class Main extends BasicGame {
     boolean test;
     boolean piece;
     boolean transition;
+    boolean easterEgg;
     Object elem;
     String str = "";
     int acte;
@@ -92,58 +94,70 @@ public class Main extends BasicGame {
 
     @Override
     public void update(GameContainer gc, int i) throws SlickException {
-        if(k.keyDown() && !test && !piece){
-           piece = true;
-        }
-        else if(k.keyDown() && !test){
-           elem = pi.next();
-           if(elem == null){
-               str = "Fin";
-               return;
-           }
-           switch(elem.getClass().getName()){
-                case("fr.licornesduswag.hcode.data.Acte"):
-                   Acte a = (Acte)elem;
-                   str = "Acte " + a.getNumero();
-                   transition = true;
-                   acte = a.getNumero();
-                   break;
-                case("fr.licornesduswag.hcode.data.Scene"):
-                   Scene s = (Scene)elem;
-                   str = "Scène " + s.getNumero();
-                   transition = true;
-                   scene = s.getNumero();
-                   break;
-                default:
-                   str = "Autre"; 
-                   transition = false;
-           }
-        }
-        test = !k.keyUp();
+    	if(k.easterEgg()){
+    		easterEgg = true;
+    	}
+	    else{
+	    	easterEgg = false;
+	    	if(k.keyDown() && !test && !piece){
+	           piece = true;
+	        }
+	        else if(k.keyDown() && !test){
+	           elem = pi.next();
+	           if(elem == null){
+	               str = "Fin";
+	               return;
+	           }
+	           switch(elem.getClass().getName()){
+	                case("fr.licornesduswag.hcode.data.Acte"):
+	                   Acte a = (Acte)elem;
+	                   str = "Acte " + a.getNumero();
+	                   transition = true;
+	                   acte = a.getNumero();
+	                   break;
+	                case("fr.licornesduswag.hcode.data.Scene"):
+	                   Scene s = (Scene)elem;
+	                   str = "Scène " + s.getNumero();
+	                   transition = true;
+	                   scene = s.getNumero();
+	                   break;
+	                default:
+	                   str = "Autre"; 
+	                   transition = false;
+	           }
+	        }
+	        test = !k.keyUp();
+	    }
     }
 
     @Override
     public void render(GameContainer gc, Graphics grphcs) throws SlickException {
-        if(!piece){
-            grphcs.setBackground(Color.darkGray);
-            grphcs.setColor(Color.white);
-            grphcs.setFont(font);
-            grphcs.drawString("24h du code", 10, 10);
-            grphcs.drawString("Espace pour voir la pièce", 10, 550);
-        }
-        else if (transition){
-            grphcs.setBackground(Color.black);
-            grphcs.setColor(Color.lightGray);
-            grphcs.setFont(font);
-            grphcs.drawString(str, 400, 250);
-        }
-        else{
-        	grphcs.setBackground(Color.white);
-        	grphcs.setColor(Color.black);
-        	grphcs.drawString("Acte " + acte, 10, 10);
-        	grphcs.drawString("Scene " + scene, 710, 10);
-        	grphcs.drawString(str, 10, 560);
-        }
+    	if(easterEgg){
+    		Image img = new Image("Ressources/Images/Unicorn.jpg");
+    		img.draw();
+    	}
+    	else{
+	        if(!piece){
+	            grphcs.setBackground(Color.darkGray);
+	            grphcs.setColor(Color.white);
+	            grphcs.setFont(font);
+	            grphcs.drawString("24h du code", 10, 10);
+	            grphcs.drawString("Espace pour voir la pièce", 10, 550);
+	        }
+	        else if (transition){
+	            grphcs.setBackground(Color.black);
+	            grphcs.setColor(Color.lightGray);
+	            grphcs.setFont(font);
+	            grphcs.drawString(str, 400, 250);
+	        }
+	        else{
+	        	grphcs.setBackground(Color.white);
+	        	grphcs.setColor(Color.black);
+	        	grphcs.drawString("Acte " + acte, 10, 10);
+	        	grphcs.drawString("Scene " + scene, 710, 10);
+	        	grphcs.drawString(str, 10, 560);
+	        }
+    	}
     }
     
     public static void main(String[] args){
