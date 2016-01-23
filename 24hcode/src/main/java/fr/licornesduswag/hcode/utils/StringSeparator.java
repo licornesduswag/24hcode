@@ -3,7 +3,7 @@ package fr.licornesduswag.hcode.utils;
 public class StringSeparator {
 	
 	  public static void main(String[] args) {
-		  StringSeparator.separeString("yolowolofdks,fklq,klq,slkf,klqs,fk,qld,fklq,fkl,qkl,f,qls,fkl,qkfl,kl,flk,klq,kgnknqklnqkfngj,q,gsklf,lknsqkgn,qeùqg,".replace(',', ' '),20);
+		  System.out.println(StringSeparator.separeString("yolowolofdks,fklq,klq,slkf,klqs,fk,qld,fklq,fkl,qkl,f,qls,fkl,qkfl,kl,flk,klq,kgnknqklnqkfngj,q,gsklf,lknsqkgn,qeùqg,".replace(',', ' '),20));
 		  
 	  }
 	  /**
@@ -23,14 +23,13 @@ public class StringSeparator {
         
         while (stop < chars.length) {
             // Tant qu'on a pas un espace on avance
-            while (chars[stop] != ' ') {
+            while (stop < chars.length && chars[stop] != ' ') {
                 stop++;
             }
             
             // Si la taille est suffisemment grande
             if (stop - start > taille) {
                 String line = new String(chars, start, prevStop - start);
-                System.out.println(line);
                 toSend += line + '\n';
                 start = prevStop;
             } else {
@@ -40,8 +39,11 @@ public class StringSeparator {
             
             prevStop = stop;
         }
+        
+        if (stop-start > 0) {
+            toSend += new String(chars, start, stop-start-1);
+        }
 
-		System.out.println(toSend);
 		return toSend;
 	}
 }
