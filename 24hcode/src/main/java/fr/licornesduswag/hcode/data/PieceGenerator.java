@@ -39,8 +39,6 @@ public class PieceGenerator extends Generator<Object> {
         this.piece = piece;
     }
     
-    
-    
     @Override
     protected void run() throws InterruptedException {
         yield(piece);
