@@ -22,6 +22,7 @@ public class StringSeparator {
 			toSend+=chars[i];
 			if ((i+1)%taille==0 && i!=1)
 			{				
+				
 				toSend+='\n';				
 			}			
 		}				
