@@ -21,33 +21,31 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+package fr.licornesduswag.hcode.data;
 
-package fr.licornesduswag.hcode;
-
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 
-import fr.licornesduswag.hcode.data.Acte;
-import fr.licornesduswag.hcode.data.Contenu;
-import fr.licornesduswag.hcode.data.Dialogue;
-import fr.licornesduswag.hcode.data.Personnage;
-import fr.licornesduswag.hcode.data.Piece;
-import fr.licornesduswag.hcode.data.Replique;
-import fr.licornesduswag.hcode.data.Scene;
-import fr.licornesduswag.hcode.data.Serializer;
-import fr.licornesduswag.hcode.data.Texte;
-
 /**
- * Un main de test
+ *
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public class Main {
+public class TestIterator {
+
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
-        System.out.println("Salut !");
-         
+        PieceIterator it = new PieceIterator(fakePiece());
+        
+        Object obj;
+        
+        while((obj = it.next()) != null) {
+            System.out.println(obj.getClass().getName());
+        }
+    }
+    
+    
+    public static Piece fakePiece() {
         // Texte
         Texte txt = new Texte("Roméo, oh Roméo !");
         
@@ -82,33 +80,8 @@ public class Main {
         personnages.add(perso1);
         personnages.add(perso2);
         Piece piece = new Piece("Romeo et Juliette", actes, personnages);
-        Personnage sgana = new Personnage("sgana", "SganarelleFace"	, "SganarelleAventure");
-        Personnage martine = new Personnage("martine","martineFace","martineAventure");
-        personnages.add(sgana);
-        personnages.add(martine);
-        txt = new Texte("Non, je te dis que je n’en veux rien faire, et que c’est à moi de parler et d’être le maître.");
-        contenus = new ArrayList<>();
-        contenus.add(txt);
-        repliques = new ArrayList<>();
-        repliques.add(new Replique(contenus));
-        dial = new Dialogue(repliques);
-        scene.getDialogues().add(dial);
-        System.out.println(piece);
         
-        
-        
-        
-        
-        //Serializer
-        Serializer serial = new Serializer(piece);
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        try {
-			serial.toZip("test.zip");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        
-        System.out.println(piece);
+        return piece;
     }
+    
 }

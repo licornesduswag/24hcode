@@ -24,14 +24,20 @@
 
 package fr.licornesduswag.hcode.data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Une scène de la pièce, contenant plusieurs dialogues
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public class Scene {
-    private int numero;
+public class Scene implements Serializable{
+    public Scene() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	private int numero;
     
     private ArrayList<Dialogue> dialogues;
     

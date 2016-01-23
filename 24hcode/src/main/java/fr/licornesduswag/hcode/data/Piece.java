@@ -24,14 +24,20 @@
 
 package fr.licornesduswag.hcode.data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Une pièce, contenant des actes
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public class Piece {
-    private String nom;
+public class Piece implements Serializable{
+    public Piece() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	private String nom;
     
     private ArrayList<Personnage> personnages;
     private ArrayList<Acte> actes;
@@ -73,9 +79,9 @@ public class Piece {
     }
 
     @Override
-    public String toString() {
-        return "Piece{" + "nom=" + nom + ", actes=" + actes + '}';
-    }
+	public String toString() {
+		return "Piece [nom=" + nom + ", personnages=" + personnages + ", actes=" + actes + "]";
+	}
     
     
 }

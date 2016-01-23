@@ -24,14 +24,20 @@
 
 package fr.licornesduswag.hcode.data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Un acte de la pièce, contenant plusieurs scènes
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public class Acte {
-    private int numero;
+public class Acte implements Serializable {
+    public Acte() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	private int numero;
     
     private ArrayList<Scene> scenes;
     
