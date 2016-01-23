@@ -27,6 +27,7 @@ package fr.licornesduswag.hcode;
 import fr.licornesduswag.hcode.data.Acte;
 import fr.licornesduswag.hcode.data.Contenu;
 import fr.licornesduswag.hcode.data.Dialogue;
+import fr.licornesduswag.hcode.data.Personnage;
 import fr.licornesduswag.hcode.data.Piece;
 import fr.licornesduswag.hcode.data.Replique;
 import fr.licornesduswag.hcode.data.Scene;
@@ -40,9 +41,13 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Salut !");
-        
+         
         // Texte
         Texte txt = new Texte("Roméo, oh Roméo !");
+        
+        //Personnage
+        Personnage perso1 = new Personnage("Roméo", "toto.png", "tata.png");
+        Personnage perso2 = new Personnage("Juliette", "toto.png", "tata.png");
         
         // Réplique
         ArrayList<Contenu> contenus = new ArrayList<>();
@@ -66,8 +71,11 @@ public class Main {
         
         // Pièce
         ArrayList<Acte> actes = new ArrayList<>();
+        ArrayList<Personnage> personnages = new ArrayList<>();
         actes.add(acte);
-        Piece piece = new Piece("Romeo et Juliette", actes);
+        personnages.add(perso1);
+        personnages.add(perso2);
+        Piece piece = new Piece("Romeo et Juliette", actes, personnages);
         
         System.out.println(piece);
     }

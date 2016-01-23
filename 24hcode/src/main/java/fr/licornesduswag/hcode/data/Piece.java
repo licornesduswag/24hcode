@@ -33,20 +33,30 @@ import java.util.ArrayList;
 public class Piece {
     private String nom;
     
+    private ArrayList<Personnage> personnages;
     private ArrayList<Acte> actes;
     
     // Constructeur
 
-    public Piece(String nom, ArrayList<Acte> actes) {
+    public Piece(String nom, ArrayList<Acte> actes, ArrayList<Personnage> personnages) {
         this.nom = nom;
         this.actes = actes;
+        this.personnages = personnages;
     }
 
     
     
     // Getters & setters
 
-    public String getNom() {
+    public ArrayList<Personnage> getPersonnages() {
+		return personnages;
+	}
+
+	public void setPersonnages(ArrayList<Personnage> personnages) {
+		this.personnages = personnages;
+	}
+
+	public String getNom() {
         return nom;
     }
 
