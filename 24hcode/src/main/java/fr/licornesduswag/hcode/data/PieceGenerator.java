@@ -47,6 +47,18 @@ public class PieceGenerator extends Generator<Object> {
         
         for (Acte a : piece.getActes()) {
             yield(a);
+            for(Scene s : a.getScenes()){
+            	yield(s);
+            	for(Dialogue d : s.getDialogues()){
+            		yield(d);
+            		for(Replique r : d.getRepliques()){
+            			yield(r);
+            			for(Contenu c : r.getContenu()){
+            				yield(c);
+            			}
+            		}
+            	}
+            }
             
         }
     }
