@@ -40,10 +40,18 @@ import org.xml.sax.helpers.DefaultHandler;
 public class SAXContentHandler extends DefaultHandler {
 
 	private String pClass = "";
+ 
+    private Piece piece = new Piece("truc");
     
-    private Piece piece = null;
+    private int numActe = 1;
     private Acte acte = null;
+    
+    private int numScene = 1;
     private Scene scene = null;
+
+    public Piece getPiece() {
+        return piece;
+    }
 
 	/**
 	 * Evenement recu a chaque fois que l'analyseur rencontre des caracteres (entre
@@ -64,11 +72,21 @@ public class SAXContentHandler extends DefaultHandler {
 
             if (!filtered.equals("")) {
                 if (filtered.startsWith("Acte")) {
-                    
-                    
+                    // On clos l'ancien acte et on en crée un nouveau
+                    if (acte != null) {
+                        piece.getActes().add(acte);
+                    }
+                    acte = new Acte(numActe);
+                    numActe++;
+                    numScene = 1;
                     
                 } else if (filtered.startsWith("Scène")) {
-                    System.out.println("SCENE !!");
+                    // On clos l'ancienne scène et on en crée une nouvelle
+                    if (scene != null) {
+                        acte.getScenes().add(scene);
+                    }
+                    scene = new Scene(numScene);
+                    numScene++;
                 }
             }
         }
@@ -80,8 +98,15 @@ public class SAXContentHandler extends DefaultHandler {
 	 */
 	@Override
 	public void endDocument() throws SAXException {
-		// TODO Auto-generated method stub
-		System.out.println("Fin de l'analse du document.");
+		// Ajout dernière scène à l'acte
+        
+        if (scene != null) {
+            acte.getScenes().add(scene);
+        }
+        
+        if (acte != null) {
+            piece.getActes().add(acte);
+        }
 
 	}
 

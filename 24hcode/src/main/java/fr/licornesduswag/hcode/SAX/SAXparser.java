@@ -41,8 +41,11 @@ public class SAXparser {
      */
     public SAXparser(String uri) throws SAXException, IOException {
         XMLReader saxReader = XMLReaderFactory.createXMLReader();
-        saxReader.setContentHandler(new SAXContentHandler());
+        SAXContentHandler ch = new SAXContentHandler();
+        saxReader.setContentHandler(ch);
         saxReader.parse(uri);
+        
+        System.out.println(ch.getPiece());
     }
 
     /**
@@ -54,11 +57,8 @@ public class SAXparser {
 
         try {
             SAXparser parser = new SAXparser(uri);
-        } catch (SAXException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
+            
+        } catch (SAXException | IOException e) {
             e.printStackTrace();
         }
     }
