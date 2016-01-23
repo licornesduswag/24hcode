@@ -1,24 +1,31 @@
 package fr.licornesduswag.hcode.utils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.stream.IntStream;
-
 public class StringSeparator {
 	
 	  public static void main(String[] args) {
-		  StringSeparator.separeString("yolowolo");
+		  StringSeparator.separeString("yolowolofdks,fklq,klq,slkf,klqs,fk,qld,fklq,fkl,qkl,f,qls,fkl,qkfl,kl,flk,klq,kgnknqklnqkfngj,q,gsklf,lknsqkgn,qeùqg,",5);
 		  
 	  }
-	  
-	static void separeString (String s)
+	  /**
+	   * 
+	   * @param s String à séparer
+	   * @param taille tailleMax dans laquelle la string est séparée
+	   * @return la string avec les \n
+	   */
+	static String separeString (String s, int taille)
 	{
 		
 		char [] chars = s.toCharArray();
-		ArrayList <Character> charList;
+		String toSend= new String();
 		for (int i = 0;i<chars.length;i++)
-		{
-			
-		}
+		{			
+			toSend+=chars[i];
+			if ((i+1)%taille==0 && i!=1)
+			{				
+				toSend+='\n';				
+			}			
+		}				
+		System.out.println(toSend);
+		return toSend;
 	}
 }
