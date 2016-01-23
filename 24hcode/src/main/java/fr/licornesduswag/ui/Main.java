@@ -24,13 +24,8 @@
 
 package fr.licornesduswag.ui;
 
-import fr.licornesduswag.hcode.SAX.PieceLoader;
 import java.awt.Font;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.security.Principal;
-import java.util.ArrayList;
 import java.util.Iterator;
 
 import org.newdawn.slick.AppGameContainer;
@@ -43,15 +38,12 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.util.ResourceLoader;
 
+import fr.licornesduswag.hcode.SAX.PieceLoader;
 import fr.licornesduswag.hcode.data.Acte;
 import fr.licornesduswag.hcode.data.Action;
 import fr.licornesduswag.hcode.data.Contenu;
-import fr.licornesduswag.hcode.data.Dialogue;
 import fr.licornesduswag.hcode.data.ImageStore;
-import fr.licornesduswag.hcode.data.Personnage;
-import fr.licornesduswag.hcode.data.Piece;
 import fr.licornesduswag.hcode.data.PieceGenerator;
-import fr.licornesduswag.hcode.data.PieceIterator;
 import fr.licornesduswag.hcode.data.Replique;
 import fr.licornesduswag.hcode.data.Scene;
 import fr.licornesduswag.hcode.data.Serializer;
