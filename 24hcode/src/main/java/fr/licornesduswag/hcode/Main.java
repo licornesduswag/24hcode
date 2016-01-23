@@ -84,6 +84,7 @@ public class Main {
         Piece piece = new Piece("Romeo et Juliette", actes, personnages);
         Personnage sgana = new Personnage("sgana", "SganarelleFace"	, "SganarelleAventure");
         Personnage martine = new Personnage("martine","martineFace","martineAventure");
+        Personnage mRobert = new Personnage("M.robert", "teteDeMRobert", "MRobertAventure");
         personnages.clear();
         personnages.add(sgana);
         personnages.add(martine);
@@ -92,14 +93,25 @@ public class Main {
         contenus = new ArrayList<>();
         contenus.add(txt);
         
-        repliques.add(new Replique(contenus));
+        repliques.add(new Replique(contenus,sgana.getNom()));
         contenus = new ArrayList<>();
         contenus.add(new Texte("Et je te dis, moi, que je veux que tu vives à ma fantaisie, et ne je ne me suis point mariée avec toi pour souffrir tes fredaines. "));
-        repliques.add(new Replique(contenus));
+        repliques.add(new Replique(contenus,martine.getNom()));
         
         dial = new Dialogue(repliques,personnages);
         scene.getDialogues().add(dial);
         scenes.add(scene);
+        scene = new Scene(2, new ArrayList<Dialogue>());
+        personnages = new ArrayList<Personnage>();
+        personnages.add(mRobert);
+        personnages.add(sgana);
+        personnages.add(martine);
+        repliques = new ArrayList<>();
+        contenus = new ArrayList<>();
+        contenus.add(new Texte("Holà, holà, holà ! Fi ! Qu’est-ce ci ? Quelle infamie ! Peste soit le coquin, de battre ainsi sa femme ! "));
+        
+        repliques.add(new Replique());
+        dial= new Dialogue(repliques, personnages);
         System.out.println(piece);
         
         
