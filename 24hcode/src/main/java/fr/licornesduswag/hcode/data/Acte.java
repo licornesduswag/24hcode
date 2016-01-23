@@ -32,7 +32,12 @@ import java.util.ArrayList;
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
 public class Acte implements Serializable {
-    public Acte() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public Acte() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

@@ -32,12 +32,32 @@ import java.util.ArrayList;
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
 public class Replique implements Serializable{
-    public Replique() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public Replique() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+	public Replique(ArrayList<Contenu> contenu, String parleur) {
+		super();
+		this.contenu = contenu;
+		this.parleur = parleur;
+	}
+
+	public String getParleur() {
+		return parleur;
+	}
+
+	public void setParleur(String parleur) {
+		this.parleur = parleur;
+	}
+
 	private ArrayList<Contenu> contenu;
+	private String parleur;
     
     // Constructeur
 
