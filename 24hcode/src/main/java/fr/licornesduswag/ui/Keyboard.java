@@ -29,5 +29,14 @@ public class Keyboard {
 		else 
 			return false;
 	}
+	
+	boolean easterEgg(){
+		if (input.isKeyDown(Input.KEY_END)){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 }
 
