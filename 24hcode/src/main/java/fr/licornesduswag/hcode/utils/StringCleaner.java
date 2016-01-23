@@ -41,7 +41,7 @@ public class StringCleaner {
         for (int i = 0; i < lines.length; i++) {
             String line = lines[i].trim();
             if (!line.equals("")) {
-                filteredLines.add(line);
+                filteredLines.add(line); 
             }
         }
 

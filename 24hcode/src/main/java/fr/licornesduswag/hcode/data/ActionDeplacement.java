@@ -24,15 +24,21 @@
 
 package fr.licornesduswag.hcode.data;
 
+import java.io.Serializable;
+
 /**
  * Déplace un personnage sur la scène
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public class ActionDeplacement extends Action {
+public class ActionDeplacement extends Action implements Serializable {
     private int x, y;
     private String personnageName;
 
-    // Constructeur
+    // Constructeurs
+
+    public ActionDeplacement() {
+        super();
+    }
     
     public ActionDeplacement(int x, int y, String personnageName,String description) {
     	super(description);
@@ -65,6 +71,11 @@ public class ActionDeplacement extends Action {
 
     public void setPersonnage(String personnage) {
         this.personnageName = personnage;
+    }
+
+    @Override
+    public String toString() {
+        return "ActionDeplacement{" + "x=" + x + ", y=" + y + ", personnageName=" + personnageName + '}';
     }
     
     
