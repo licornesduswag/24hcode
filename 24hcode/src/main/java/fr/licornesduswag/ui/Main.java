@@ -177,7 +177,7 @@ public class Main extends BasicGame {
 				grphcs.drawString(str, 400, 250);
 			}
 			else{
-				Image bg = is.getImage(acte+"_"+scene+"_bg");
+				Image bg = is.getImage(acte+"_"+scene+"_bg.jpg");
 				if(!(bg == null)){
 					bg.draw();
 				}
@@ -187,7 +187,7 @@ public class Main extends BasicGame {
 				grphcs.drawString("Scene " + scene, 710, 10);
 				grphcs.setColor(Color.black);
 				grphcs.drawString(StringSeparator.separeString(str, 85), 10, 48);
-				Image fg = is.getImage(acte+"_"+scene+"_fg");
+				Image fg = is.getImage(acte+"_"+scene+"_fg.png");
 				if(!(fg == null)){
 					fg.draw();
 				}
