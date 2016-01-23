@@ -29,6 +29,7 @@ import java.awt.Font;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.security.Principal;
 import java.util.ArrayList;
 
 import org.newdawn.slick.AppGameContainer;
@@ -64,10 +65,11 @@ public class Main extends BasicGame {
     boolean piece;
     boolean transition;
     boolean easterEgg;
+    ImageStore is;
     Object elem;
     String str = "";
     int acte;
-    int scene;
+    Scene scene;
     PieceIterator pi = new PieceIterator(PieceLoader.load("../pieces/html/romeoEtLaptiteCatin.xml"));
     public Main() {
         super("24hcode");
@@ -75,7 +77,6 @@ public class Main extends BasicGame {
 
     @Override
     public void init(GameContainer gc) throws SlickException {
-    	ImageStore is;
         gc.setShowFPS(false);
         k = new Keyboard(gc);
 	try {
@@ -117,10 +118,9 @@ public class Main extends BasicGame {
 	                   acte = a.getNumero();
 	                   break;
 	                case("fr.licornesduswag.hcode.data.Scene"):
-	                   Scene s = (Scene)elem;
-	                   str = "Scène " + s.getNumero();
+	                   scene = (Scene)elem;
+	                   str = "Scène " + scene.getNumero();
 	                   transition = true;
-	                   scene = s.getNumero();
 	                   break;
 	                default:
 	                   str = "Autre"; 
@@ -152,11 +152,15 @@ public class Main extends BasicGame {
 	            grphcs.drawString(str, 400, 250);
 	        }
 	        else{
+	        	if(!scene.getBg().equals(""))
+	        		is.getImage(scene.getBg()).draw();		        	
 	        	grphcs.setBackground(Color.white);
 	        	grphcs.setColor(Color.black);
 	        	grphcs.drawString("Acte " + acte, 10, 10);
-	        	grphcs.drawString("Scene " + scene, 710, 10);
+	        	grphcs.drawString("Scene " + scene.getNumero(), 710, 10);
 	        	grphcs.drawString(str, 10, 560);
+	        	if(!scene.getFg().equals(""))
+	        		is.getImage(scene.getFg());
 	        }
     	}
     }
@@ -196,7 +200,8 @@ public class Main extends BasicGame {
         ArrayList<Dialogue> dialogues = new ArrayList<>();
         dialogues.add(dial);
         Scene scene = new Scene(1, dialogues);
-        
+        scene.setBg("bg.jpg");
+        scene.setFg("fg.png");
         // Acte
         ArrayList<Scene> scenes = new ArrayList<>();
         scenes.add(scene);

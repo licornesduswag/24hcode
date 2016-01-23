@@ -35,6 +35,8 @@ public class Scene implements Serializable{
     /**
 	 * 
 	 */
+	String bg = "";
+	String fg = "";
 	private static final long serialVersionUID = 1L;
 
 	public Scene() {
@@ -76,10 +78,25 @@ public class Scene implements Serializable{
         this.dialogues = dialogues;
     }
 
-    @Override
+    public String getBg() {
+		return bg;
+	}
+
+	public void setBg(String bg) {
+		this.bg = bg;
+	}
+
+	public String getFg() {
+		return fg;
+	}
+
+	public void setFg(String fg) {
+		this.fg = fg;
+	}
+
+	@Override
     public String toString() {
         return "Scene{" + "numero=" + numero + ", dialogues=" + dialogues + '}';
     }
-    
     
 }
