@@ -24,8 +24,7 @@
 package fr.licornesduswag.hcode.SAX;
 
 import fr.licornesduswag.hcode.data.Piece;
-import fr.licornesduswag.hcode.data.Serializer;
-import java.io.FileOutputStream;
+
 
 /**
  * @author Alban
@@ -38,7 +37,8 @@ public class MainSAX {
      */
     public static void main(String[] args) {
         Piece p = PieceLoader.load("../pieces/html/romeoEtLaptiteCatin.xml");
-        Serializer s = new Serializer(p);
+        System.out.println(p);
+        //Serializer s = new Serializer(p);
     }
 
 }

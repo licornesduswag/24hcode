@@ -24,6 +24,7 @@
 
 package fr.licornesduswag.ui;
 
+import fr.licornesduswag.hcode.SAX.PieceLoader;
 import java.io.InputStream;
 import fr.licornesduswag.ui.Keyboard;
 import fr.licornesduswag.hcode.data.*;
@@ -54,7 +55,7 @@ public class Main extends BasicGame {
     String str = "";
     int acte;
     int scene;
-    PieceIterator pi = new PieceIterator(creerPiece());
+    PieceIterator pi = new PieceIterator(PieceLoader.load("../pieces/html/romeoEtLaptiteCatin.xml"));
     public Main() {
         super("24hcode");
     }
