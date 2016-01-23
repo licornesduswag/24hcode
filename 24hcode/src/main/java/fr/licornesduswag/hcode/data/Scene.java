@@ -59,6 +59,11 @@ public class Scene {
     public void setDialogues(ArrayList<Dialogue> dialogues) {
         this.dialogues = dialogues;
     }
+
+    @Override
+    public String toString() {
+        return "Scene{" + "numero=" + numero + ", dialogues=" + dialogues + '}';
+    }
     
     
 }

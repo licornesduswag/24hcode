@@ -24,6 +24,8 @@
 
 package fr.licornesduswag.hcode.data;
 
+import java.util.ArrayList;
+
 /**
  * Une pièce, contenant des actes
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
@@ -31,11 +33,16 @@ package fr.licornesduswag.hcode.data;
 public class Piece {
     private String nom;
     
+    private ArrayList<Acte> actes;
+    
     // Constructeur
 
-    public Piece(String nom) {
+    public Piece(String nom, ArrayList<Acte> actes) {
         this.nom = nom;
+        this.actes = actes;
     }
+
+    
     
     // Getters & setters
 
@@ -45,6 +52,19 @@ public class Piece {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public ArrayList<Acte> getActes() {
+        return actes;
+    }
+
+    public void setActes(ArrayList<Acte> actes) {
+        this.actes = actes;
+    }
+
+    @Override
+    public String toString() {
+        return "Piece{" + "nom=" + nom + ", actes=" + actes + '}';
     }
     
     

@@ -46,6 +46,11 @@ public class Texte extends Contenu {
     public void setTexte(String texte) {
         this.texte = texte;
     }
+
+    @Override
+    public String toString() {
+        return "Texte{" + "texte=" + texte + '}';
+    }
     
     
 }

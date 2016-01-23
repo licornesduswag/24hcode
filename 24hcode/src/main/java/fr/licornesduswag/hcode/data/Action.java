@@ -46,6 +46,11 @@ public class Action extends Contenu {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return "Action{" + "description=" + description + '}';
+    }
     
     
 }

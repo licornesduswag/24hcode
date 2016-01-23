@@ -48,6 +48,11 @@ public class Replique {
     public void setContenu(ArrayList<Contenu> contenu) {
         this.contenu = contenu;
     }
+
+    @Override
+    public String toString() {
+        return "Replique{" + "contenu=" + contenu + '}';
+    }
     
     
 }

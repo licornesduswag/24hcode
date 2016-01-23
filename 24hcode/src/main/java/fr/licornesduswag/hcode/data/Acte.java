@@ -59,6 +59,11 @@ public class Acte {
     public void setScenes(ArrayList<Scene> scenes) {
         this.scenes = scenes;
     }
+
+    @Override
+    public String toString() {
+        return "Acte{" + "numero=" + numero + ", scenes=" + scenes + '}';
+    }
     
     
 }

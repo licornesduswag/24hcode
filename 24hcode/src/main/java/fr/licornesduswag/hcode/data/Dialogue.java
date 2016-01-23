@@ -48,6 +48,11 @@ public class Dialogue {
     public void setRepliques(ArrayList<Replique> repliques) {
         this.repliques = repliques;
     }
+
+    @Override
+    public String toString() {
+        return "Dialogue{" + "repliques=" + repliques + '}';
+    }
     
     
 }
