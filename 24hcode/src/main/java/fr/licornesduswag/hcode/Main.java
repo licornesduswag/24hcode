@@ -33,7 +33,6 @@ import fr.licornesduswag.hcode.data.Contenu;
 import fr.licornesduswag.hcode.data.Dialogue;
 import fr.licornesduswag.hcode.data.Personnage;
 import fr.licornesduswag.hcode.data.Piece;
-import fr.licornesduswag.hcode.data.PieceIterator;
 import fr.licornesduswag.hcode.data.Replique;
 import fr.licornesduswag.hcode.data.Scene;
 import fr.licornesduswag.hcode.data.Serializer;
