@@ -29,5 +29,23 @@ package fr.licornesduswag.hcode.data;
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
 public class Piece {
+    private String nom;
+    
+    // Constructeur
 
+    public Piece(String nom) {
+        this.nom = nom;
+    }
+    
+    // Getters & setters
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+    
+    
 }

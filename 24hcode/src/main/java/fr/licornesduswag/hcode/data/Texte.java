@@ -28,6 +28,24 @@ package fr.licornesduswag.hcode.data;
  * Un texte lu par un des acteurs
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public class Texte {
+public class Texte extends Contenu {
+    private String texte;
+    
+    // Constructeur
 
+    public Texte(String texte) {
+        this.texte = texte;
+    }
+    
+    // Getters & setters
+
+    public String getTexte() {
+        return texte;
+    }
+
+    public void setTexte(String texte) {
+        this.texte = texte;
+    }
+    
+    
 }

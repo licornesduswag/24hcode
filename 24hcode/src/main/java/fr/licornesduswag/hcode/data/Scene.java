@@ -31,5 +31,34 @@ import java.util.ArrayList;
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
 public class Scene {
+    private int numero;
+    
     private ArrayList<Dialogue> dialogues;
+    
+    // Constructeur
+
+    public Scene(int numero, ArrayList<Dialogue> dialogues) {
+        this.numero = numero;
+        this.dialogues = dialogues;
+    }
+    
+    // Getters & setters
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public ArrayList<Dialogue> getDialogues() {
+        return dialogues;
+    }
+
+    public void setDialogues(ArrayList<Dialogue> dialogues) {
+        this.dialogues = dialogues;
+    }
+    
+    
 }

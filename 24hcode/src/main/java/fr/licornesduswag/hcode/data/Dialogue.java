@@ -32,4 +32,22 @@ import java.util.ArrayList;
  */
 public class Dialogue {
     private ArrayList<Replique> repliques;
+    
+    // Constructeur
+
+    public Dialogue(ArrayList<Replique> repliques) {
+        this.repliques = repliques;
+    }
+    
+    // Getters & setters
+
+    public ArrayList<Replique> getRepliques() {
+        return repliques;
+    }
+
+    public void setRepliques(ArrayList<Replique> repliques) {
+        this.repliques = repliques;
+    }
+    
+    
 }
