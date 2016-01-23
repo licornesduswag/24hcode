@@ -34,7 +34,7 @@ import fr.licornesduswag.hcode.data.Texte;
 import java.util.ArrayList;
 
 /**
- *
+ * Un main de test
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
 public class Main {
