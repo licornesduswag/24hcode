@@ -24,14 +24,20 @@
 
 package fr.licornesduswag.hcode.data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Une réplique avec du contenu
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public class Replique {
-    private ArrayList<Contenu> contenu;
+public class Replique implements Serializable{
+    public Replique() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	private ArrayList<Contenu> contenu;
     
     // Constructeur
 

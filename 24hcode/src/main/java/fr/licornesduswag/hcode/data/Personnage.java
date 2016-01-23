@@ -1,12 +1,13 @@
 package fr.licornesduswag.hcode.data;
 
+import java.io.Serializable;
 
 /**
  * Classe définissant un personnage et ses sprites
  * @author Kelian Duval (Spritix) 
  */
 
-public class Personnage {
+public class Personnage implements Serializable{
 	private String nom;
 	private String sprite_face;
 	private String sprite_aventure;
@@ -16,6 +17,10 @@ public class Personnage {
 		this.nom = nom;
 		this.sprite_face = sprite_face;
 		this.sprite_aventure = sprite_aventure;
+	}
+	public Personnage() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	public String getNom() {
 		return nom;

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_66" class="java.beans.XMLDecoder">
+ <object class="fr.licornesduswag.hcode.data.Serializer">
+  <void property="piece">
+   <object class="fr.licornesduswag.hcode.data.Piece">
+    <void property="actes">
+     <object class="java.util.ArrayList">
+      <void method="add">
+       <object class="fr.licornesduswag.hcode.data.Acte">
+        <void property="numero">
+         <int>1</int>
+        </void>
+        <void property="scenes">
+         <object class="java.util.ArrayList">
+          <void method="add">
+           <object class="fr.licornesduswag.hcode.data.Scene">
+            <void property="dialogues">
+             <object class="java.util.ArrayList">
+              <void method="add">
+               <object class="fr.licornesduswag.hcode.data.Dialogue">
+                <void property="repliques">
+                 <object class="java.util.ArrayList">
+                  <void method="add">
+                   <object class="fr.licornesduswag.hcode.data.Replique">
+                    <void property="contenu">
+                     <object class="java.util.ArrayList">
+                      <void method="add">
+                       <object class="fr.licornesduswag.hcode.data.Texte">
+                        <void property="texte">
+                         <string>Roméo, oh Roméo !</string>
+                        </void>
+                       </object>
+                      </void>
+                     </object>
+                    </void>
+                   </object>
+                  </void>
+                 </object>
+                </void>
+               </object>
+              </void>
+             </object>
+            </void>
+            <void property="numero">
+             <int>1</int>
+            </void>
+           </object>
+          </void>
+         </object>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void property="nom">
+     <string>Romeo et Juliette</string>
+    </void>
+    <void property="personnages">
+     <object class="java.util.ArrayList">
+      <void method="add">
+       <object class="fr.licornesduswag.hcode.data.Personnage">
+        <void property="nom">
+         <string>Roméo</string>
+        </void>
+        <void property="sprite_aventure">
+         <string>tata.png</string>
+        </void>
+        <void property="sprite_face">
+         <string>toto.png</string>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="fr.licornesduswag.hcode.data.Personnage">
+        <void property="nom">
+         <string>Juliette</string>
+        </void>
+        <void property="sprite_aventure">
+         <string>tata.png</string>
+        </void>
+        <void property="sprite_face">
+         <string>toto.png</string>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>
