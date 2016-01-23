@@ -26,6 +26,7 @@ package fr.licornesduswag.hcode.data;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Une pièce, contenant des actes
@@ -45,6 +46,8 @@ public class Piece implements Serializable{
 	private String nom;
     
     private ArrayList<Personnage> personnages;
+    static public HashMap<String, Personnage> toutLesPersonnagesDuMonde;
+    
     private ArrayList<Acte> actes;
     
     // Constructeur
@@ -53,6 +56,11 @@ public class Piece implements Serializable{
         this.nom = nom;
         this.actes = actes;
         this.personnages = personnages;
+        toutLesPersonnagesDuMonde = new HashMap<String,Personnage>();
+        for ( Personnage P : personnages)
+        {
+        	toutLesPersonnagesDuMonde.put(P.getNom(), P);
+        }
     }
 
     public Piece(String nom) {
