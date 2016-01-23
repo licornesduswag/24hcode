@@ -12,7 +12,7 @@ public class StringSeparator {
 	   * @param taille tailleMax dans laquelle la string est séparée
 	   * @return la string avec les \n
 	   */
-	static String separeString (String s, int taille)
+	public static String separeString (String s, int taille)
 	{
 		
 		char [] chars = s.toCharArray();
