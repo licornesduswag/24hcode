@@ -23,7 +23,9 @@
  */
 package fr.licornesduswag.hcode.SAX;
 
+import fr.licornesduswag.hcode.data.Acte;
 import fr.licornesduswag.hcode.data.Piece;
+import fr.licornesduswag.hcode.data.Scene;
 
 
 /**
@@ -36,8 +38,14 @@ public class MainSAX {
      * @param args
      */
     public static void main(String[] args) {
-        Piece p = PieceLoader.load("../pieces/html/romeoEtLaptiteCatin.xml");
-        System.out.println(p);
+        Piece p = PieceLoader.load("../pieces/html/medecinMalgresLui.xml");
+        
+        for (Acte a : p.getActes()) {
+            System.out.println("acte "+a.getNumero());
+            for (Scene s : a.getScenes()) {
+                System.out.println("scene " + s.getNumero());
+            }
+        }
         //Serializer s = new Serializer(p);
     }
 
