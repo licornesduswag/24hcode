@@ -176,13 +176,21 @@ public class Main extends BasicGame {
 				grphcs.setFont(font);
 				grphcs.drawString(str, 400, 250);
 			}
-			else{	        	
+			else{
+				Image bg = is.getImage(acte+"_"+scene+"_bg");
+				if(!(bg == null)){
+					bg.draw();
+				}
 				grphcs.setBackground(Color.lightGray);
 				grphcs.setColor(Color.black);
 				grphcs.drawString("Acte " + acte, 10, 10);
 				grphcs.drawString("Scene " + scene, 710, 10);
 				grphcs.setColor(Color.black);
 				grphcs.drawString(StringSeparator.separeString(str, 85), 10, 48);
+				Image fg = is.getImage(acte+"_"+scene+"_fg");
+				if(!(fg == null)){
+					fg.draw();
+				}
 			}
 		}
 	}
