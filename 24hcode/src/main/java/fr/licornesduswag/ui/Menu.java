@@ -24,27 +24,44 @@
 
 package fr.licornesduswag.ui;
 
+import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
+import java.awt.Font;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.TrueTypeFont;
+import org.newdawn.slick.util.ResourceLoader;
 
 /**
  *
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
 public class Menu extends BasicGame {
-
+    TrueTypeFont font;
+    
     public Menu() {
         super("24hcode");
     }
 
     @Override
     public void init(GameContainer gc) throws SlickException {
-        
+        gc.setShowFPS(false);
+ 
+	// load font from a .ttf file
+	try {
+		InputStream inputStream	= ResourceLoader.getResourceAsStream("Ressources/Fonts/paper.ttf");
+ 
+		Font awtFont = Font.createFont(Font.TRUETYPE_FONT, inputStream);
+		awtFont = awtFont.deriveFont(32f); // set font size
+		font = new TrueTypeFont(awtFont, true);
+ 
+	} catch (Exception e) {
+		e.printStackTrace();
+	}	
     }
 
     @Override
@@ -54,7 +71,11 @@ public class Menu extends BasicGame {
 
     @Override
     public void render(GameContainer gc, Graphics grphcs) throws SlickException {
-        
+        grphcs.setBackground(new org.newdawn.slick.Color(50, 50, 50));
+        grphcs.setColor(org.newdawn.slick.Color.white);
+        grphcs.setFont(font);
+        grphcs.drawString("24h du code", 10, 10);
+                        
     }
     
     public static void main(String[] args) {
