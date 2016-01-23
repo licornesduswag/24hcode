@@ -79,6 +79,7 @@ public class Main {
         actes.add(acte);
         personnages.add(perso1);
         personnages.add(perso2);
+        //début scene 1 acte 1
         Piece piece = new Piece("Romeo et Juliette", actes, personnages);
         Personnage sgana = new Personnage("sgana", "SganarelleFace"	, "SganarelleAventure");
         Personnage martine = new Personnage("martine","martineFace","martineAventure");
@@ -99,6 +100,7 @@ public class Main {
         dial = new Dialogue(repliques,personnages);
         scene.getDialogues().add(dial);
         scenes.add(scene);
+        // début scene 2 acte 1
         scene = new Scene(2, new ArrayList<Dialogue>());
         personnages = new ArrayList<Personnage>();
         personnages.add(mRobert);
