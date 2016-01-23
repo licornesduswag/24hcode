@@ -86,7 +86,7 @@ public class Main extends BasicGame {
 		k = new Keyboard(gc);
 		try {
 			InputStream inputStream	= ResourceLoader.getResourceAsStream("Ressources/Fonts/paper.ttf");
-
+			new Serializer().fromZip("Ressources/piece.zip", is);
 			Font awtFont = Font.createFont(Font.TRUETYPE_FONT, inputStream);
 			awtFont = awtFont.deriveFont(32f); // set font size
 			font = new TrueTypeFont(awtFont, true);
