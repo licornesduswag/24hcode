@@ -82,6 +82,22 @@ public class Main {
         personnages.add(perso1);
         personnages.add(perso2);
         Piece piece = new Piece("Romeo et Juliette", actes, personnages);
+        Personnage sgana = new Personnage("sgana", "SganarelleFace"	, "SganarelleAventure");
+        Personnage martine = new Personnage("martine","martineFace","martineAventure");
+        personnages.add(sgana);
+        personnages.add(martine);
+        txt = new Texte("Non, je te dis que je n’en veux rien faire, et que c’est à moi de parler et d’être le maître.");
+        contenus = new ArrayList<>();
+        contenus.add(txt);
+        repliques = new ArrayList<>();
+        repliques.add(new Replique(contenus));
+        dial = new Dialogue(repliques);
+        scene.getDialogues().add(dial);
+        System.out.println(piece);
+        
+        
+        
+        
         
         //Serializer
         Serializer serial = new Serializer(piece);
