@@ -87,10 +87,11 @@ public class Main {
         personnages.clear();
         personnages.add(sgana);
         personnages.add(martine);
+        repliques = new ArrayList<>();
         txt = new Texte("Non, je te dis que je n’en veux rien faire, et que c’est à moi de parler et d’être le maître.");
         contenus = new ArrayList<>();
         contenus.add(txt);
-        repliques = new ArrayList<>();
+        
         repliques.add(new Replique(contenus));
         contenus = new ArrayList<>();
         contenus.add(new Texte("Et je te dis, moi, que je veux que tu vives à ma fantaisie, et ne je ne me suis point mariée avec toi pour souffrir tes fredaines. "));
