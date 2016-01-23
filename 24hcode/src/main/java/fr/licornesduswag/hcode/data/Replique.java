@@ -37,6 +37,20 @@ public class Replique implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
+	public Replique(ArrayList<Contenu> contenu, String parleur) {
+		super();
+		this.contenu = contenu;
+		this.parleur = parleur;
+	}
+
+	public String getParleur() {
+		return parleur;
+	}
+
+	public void setParleur(String parleur) {
+		this.parleur = parleur;
+	}
+
 	private ArrayList<Contenu> contenu;
 	private String parleur;
     
