@@ -26,22 +26,37 @@ package fr.licornesduswag.hcode.SAX;
 import java.util.ArrayList;
 
 import org.xml.sax.Attributes;
-import org.xml.sax.Locator;
 import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
 
-import fr.licornesduswag.hcode.data.Acte;
 import fr.licornesduswag.hcode.data.Contenu;
 import fr.licornesduswag.hcode.data.Replique;
+import fr.licornesduswag.hcode.data.Scene;
 import fr.licornesduswag.hcode.data.Texte;
-import org.xml.sax.helpers.DefaultHandler;
 /**
  * @author Alban
  *
  */
 public class SAXContentHandler extends DefaultHandler {
 
-	private Locator locator;
-	private ArrayList<Acte> listeActes = new ArrayList<>();
+	private String classeCourante="";
+	private String baliseCourante="";
+
+	private String nomPiece = "";
+	
+	
+
+	
+	
+	
+	int chapitreCourant = 1; 
+	ArrayList<Scene> scenceCourante;
+	
+	private ArrayList<Contenu> contenu = new ArrayList<>();
+	private Replique r = new Replique(contenu);
+	
+	
+
 	
 
 	/**
@@ -54,12 +69,23 @@ public class SAXContentHandler extends DefaultHandler {
 	 */
 	@Override
 	public void characters(char[] ch, int start, int length) throws SAXException {
-		// TODO Auto-generated method stub
-		String contenuBalise = new String(ch, start, length);
+		// TODO Auto-generated method stub.
+		
+		String contenuBalise  = new String(ch, start, length);
+		
+			
+			
 		//System.out.println("#PCDATA : " + contenuBalise);
-		ArrayList<Contenu> liste = new ArrayList<Contenu>();
-		liste.add(new Texte(contenuBalise));
-		Replique r = new Replique(liste);
+	
+		if(classeCourante.equals("TitreOeuvre") && !contenuBalise.equals("")){
+			System.out.println("Le nom de la pièce : "+contenuBalise);
+			nomPiece = contenuBalise;
+			
+		}
+		if(classeCourante.equals("Textajustify") && baliseCourante.equals("span")){
+			Texte t = new Texte(contenuBalise);
+			r.getContenu().add(t);
+		}
 
 	}
 
@@ -74,24 +100,21 @@ public class SAXContentHandler extends DefaultHandler {
 
 	}
 
-	/* (non-Javadoc)
-	 * @see org.xml.sax.ContentHandler#endElement(java.lang.String, java.lang.String, java.lang.String)
+	/**
+	 * Evenement envoyé à la fermeture d'une balise
+	 * @param uri
+	 * @param localName
+	 * @param qName
+	 * @throws SAXException
 	 */
 	@Override
 	public void endElement(String uri, String localName, String qName) throws SAXException {
 		// TODO Auto-generated method stub
+		
 		//System.out.print("Fermeture de la balise : " + localName);
 		
-		// name space non null
-		if ( ! "".equals(uri)) { 
-			//System.out.print("appartenant a l'espace de nommage : " + localName);
-		}
-
-		//System.out.println();
 
 	}
-
-	
 
 	/**
 	 * Evenement envoye au demarrage du parse du flux xml.
@@ -116,19 +139,28 @@ public class SAXContentHandler extends DefaultHandler {
 		// TODO Auto-generated method stub
 		//System.out.println("Ouverture de la balise : " + localName);
 
-		if ( ! "".equals(uri)) { // espace de nommage particulier
-			//System.out.println("  appartenant a l'espace de nom : "  + uri);
-		}
         
         // Si paragraphe
+		baliseCourante = localName;
         if ("p".equals(localName)) {
             // Si chapitre
             for (int i = 0; i < atts.getLength(); i++) {
+            	classeCourante = atts.getValue(i);
                 if (atts.getLocalName(i).equals("class") && atts.getValue(i).equals("Chapitre")) {
                     System.out.println("CHAPITRE");
+                    
                 }
+                else if(atts.getLocalName(i).equals("class") && atts.getValue(i).equals("TitreOeuvre")){
+                	System.out.println("TITRE OEUVRE");
+                }
+                else if(atts.getLocalName(i).equals("class") && atts.getValue(i).equals("Texteajustify")){
+                	classeCourante = "Texteajustify";
+                }
+                
             }
         }
+        
+       
 
 //		System.out.println("  Attributs de la balise : ");
 //
