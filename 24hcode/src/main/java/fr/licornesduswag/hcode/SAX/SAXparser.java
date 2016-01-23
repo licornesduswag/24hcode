@@ -51,7 +51,7 @@ public class SAXparser {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String uri = new File("C:\\Users\\Alban\\git\\24hcode\\pieces\\html\\medecinMalgresLui.xml").toURI().toString();
+		String uri = new File("../pieces/html/medecinMalgresLui.xml").toURI().toString();
 		
 		try {
 			SAXparser parser = new SAXparser(uri);
