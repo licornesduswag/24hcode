@@ -46,7 +46,7 @@ public class Piece implements Serializable{
 	private String nom;
     
     private ArrayList<Personnage> personnages;
-    private HashMap<String, Personnage> toutLesPersonnagesDuMonde;
+    static public HashMap<String, Personnage> toutLesPersonnagesDuMonde;
     
     private ArrayList<Acte> actes;
     

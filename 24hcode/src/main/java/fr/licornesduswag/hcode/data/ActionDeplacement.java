@@ -28,13 +28,14 @@ package fr.licornesduswag.hcode.data;
  * Déplace un personnage sur la scène
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public class ActionDeplacement {
+public class ActionDeplacement extends Action {
     private int x, y;
     private String personnageName;
 
     // Constructeur
     
-    public ActionDeplacement(int x, int y, String personnageName) {
+    public ActionDeplacement(int x, int y, String personnageName,String description) {
+    	super(description);
         this.x = x;
         this.y = y;
         this.personnageName = personnageName;
