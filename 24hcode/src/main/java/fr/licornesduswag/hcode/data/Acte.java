@@ -46,11 +46,16 @@ public class Acte implements Serializable {
     
     private ArrayList<Scene> scenes;
     
-    // Constructeur
+    // Constructeurs
 
     public Acte(int numero, ArrayList<Scene> scenes) {
         this.numero = numero;
         this.scenes = scenes;
+    }
+
+    public Acte(int numero) {
+        this.numero = numero;
+        this.scenes = new ArrayList<>();
     }
     
     // Getters & setters

@@ -23,36 +23,42 @@
  */
 package fr.licornesduswag.hcode.SAX;
 
-import java.util.ArrayList;
+import fr.licornesduswag.hcode.data.Acte;
+import fr.licornesduswag.hcode.data.Dialogue;
+import fr.licornesduswag.hcode.data.Piece;
+import fr.licornesduswag.hcode.data.Replique;
+import fr.licornesduswag.hcode.data.Scene;
+import fr.licornesduswag.hcode.data.Texte;
+import fr.licornesduswag.hcode.utils.StringCleaner;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import fr.licornesduswag.hcode.data.Contenu;
-import fr.licornesduswag.hcode.data.Replique;
-import fr.licornesduswag.hcode.data.Scene;
-import fr.licornesduswag.hcode.data.Texte;
+
 /**
  * @author Alban
  *
  */
 public class SAXContentHandler extends DefaultHandler {
 
-	private String classeCourante="";
-	private String baliseCourante="";
+	private String pClass = "";
+ 
+    private Piece piece = new Piece("truc");
+    
+    private int numActe = 1;
+    private Acte acte = null;
+    
+    private int numScene = 1;
+    private Scene scene = null;
+    
+    private Dialogue dialogue;
+    
+    private Replique replique;
 
-	private String nomPiece = "";
-
-	int chapitreCourant = 1; 
-	ArrayList<Scene> scenceCourante;
-	
-	private ArrayList<Contenu> contenu = new ArrayList<>();
-	private Replique r = new Replique(contenu);
-	
-	
-
-	
+    public Piece getPiece() {
+        return piece;
+    }
 
 	/**
 	 * Evenement recu a chaque fois que l'analyseur rencontre des caracteres (entre
@@ -65,23 +71,61 @@ public class SAXContentHandler extends DefaultHandler {
 	@Override
 	public void characters(char[] ch, int start, int length) throws SAXException {
 		// TODO Auto-generated method stub.
+        
+        if (pClass.equals("Chapitre")) {
 		
-		String contenuBalise  = new String(ch, start, length);
-		
-			
-			
-		//System.out.println("#PCDATA : " + contenuBalise);
-	
-		if(classeCourante.equals("TitreOeuvre") && !contenuBalise.equals("")){
-			System.out.println("Le nom de la pièce : "+contenuBalise);
-			nomPiece = contenuBalise;
-			
-		}
-		if(classeCourante.equals("Textajustify") && baliseCourante.equals("span")){
-			Texte t = new Texte(contenuBalise);
-			r.getContenu().add(t);
-		}
+            String contenuBalise  = new String(ch, start, length);
+            String filtered = StringCleaner.clean(contenuBalise);
 
+            if (!filtered.equals("")) {
+                if (filtered.startsWith("Acte")) {
+                    // On clos l'ancien acte et on en crée un nouveau
+                    if (acte != null) {
+                        piece.getActes().add(acte);
+                    }
+                    acte = new Acte(numActe);
+                    numActe++;
+                    numScene = 1;
+                    
+                } else if (filtered.startsWith("Scène")) {
+                    // On clos l'ancienne scène et on en crée une nouvelle
+                    if (scene != null) {
+                        if (dialogue != null) {
+                            scene.getDialogues().add(dialogue);
+                        }
+                        if (acte != null) {
+                            acte.getScenes().add(scene);
+                        } else {
+                            // Scène mais pas d'acte : on crée un acte bidon
+                            acte = new Acte(0);
+                            acte.getScenes().add(scene);
+                        }
+                    }
+                    scene = new Scene(numScene);
+                    dialogue = new Dialogue();
+                    numScene++;
+                }
+            }
+        } else if (pClass.equals("Texteajustify") || pClass.equals("Textealeft")) {
+            String contenuBalise  = new String(ch, start, length);
+            String filtered = StringCleaner.clean(contenuBalise);
+            
+            if (!filtered.equals("")) {
+                
+                if (filtered.toUpperCase().equals(filtered)) {
+                    // C'est le nom d'un personnage
+                    if (replique != null) {
+                        dialogue.getRepliques().add(replique);
+                    }
+                    replique = new Replique(filtered);
+                } else {
+                    // C'est du texte
+                    if (replique != null) {
+                        replique.getContenu().add(new Texte(filtered));
+                    }
+                }
+            }
+        }
 	}
 
 	/**
@@ -90,8 +134,12 @@ public class SAXContentHandler extends DefaultHandler {
 	 */
 	@Override
 	public void endDocument() throws SAXException {
-		// TODO Auto-generated method stub
-		System.out.println("Fin de l'analse du document.");
+		// Ajout dernière scène à l'acte
+        
+        if (scene != null && acte != null) {
+            acte.getScenes().add(scene);
+            piece.getActes().add(acte);
+        }
 
 	}
 
@@ -105,10 +153,7 @@ public class SAXContentHandler extends DefaultHandler {
 	@Override
 	public void endElement(String uri, String localName, String qName) throws SAXException {
 		// TODO Auto-generated method stub
-		
-		//System.out.print("Fermeture de la balise : " + localName);
-		
-
+        pClass = "";
 	}
 
 	/**
@@ -131,39 +176,8 @@ public class SAXContentHandler extends DefaultHandler {
 	 */
 	@Override
 	public void startElement(String uri, String localName, String qName, Attributes atts) throws SAXException {
-		// TODO Auto-generated method stub
-		//System.out.println("Ouverture de la balise : " + localName);
-
-        
-        // Si paragraphe
-		baliseCourante = localName;
         if ("p".equals(localName)) {
-            // Si chapitre
-            for (int i = 0; i < atts.getLength(); i++) {
-            	classeCourante = atts.getValue(i);
-                if (atts.getLocalName(i).equals("class") && atts.getValue(i).equals("Chapitre")) {
-                    System.out.println("CHAPITRE");
-                    
-                }
-                else if(atts.getLocalName(i).equals("class") && atts.getValue(i).equals("TitreOeuvre")){
-                	System.out.println("TITRE OEUVRE");
-                }
-                else if(atts.getLocalName(i).equals("class") && atts.getValue(i).equals("Texteajustify")){
-                	classeCourante = "Texteajustify";
-                }
-                
-            }
+            pClass = atts.getValue("class");
         }
-        
-       
-
-//		System.out.println("  Attributs de la balise : ");
-//
-//		// on parcourt la liste des attributs
-//		for (int index = 0; index < atts.getLength(); index++) { 
-//
-//			System.out.println("     - " +  atts.getLocalName(index) + " = " + atts.getValue(index));
-//		}
-
 	}
 }

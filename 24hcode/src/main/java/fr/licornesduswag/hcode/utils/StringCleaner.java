@@ -22,70 +22,42 @@
  * THE SOFTWARE.
  */
 
-package fr.licornesduswag.hcode.data;
+package fr.licornesduswag.hcode.utils;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Une réplique avec du contenu
+ *
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public class Replique implements Serializable{
+public class StringCleaner {
+    public static String clean(String input) {
+        String trimmed = input.trim();
+
+        String[] lines = trimmed.split("\n");
+        ArrayList<String> filteredLines = new ArrayList<>();
+
+        for (int i = 0; i < lines.length; i++) {
+            String line = lines[i].trim();
+            if (!line.equals("")) {
+                filteredLines.add(line);
+            }
+        }
+
+        String filtered = "";
+        for (String s : filteredLines) {
+            filtered += s;
+        }
+        
+        return trim(filtered);
+    }
+    
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	public Replique() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-    public Replique(String parleur) {
-        this.parleur = parleur;
-        this.contenu = new ArrayList<>();
+     * Retire les espace ET les espaces insécables
+     * @param input
+     * @return 
+     */
+    public static String trim(String input) {
+        return input.trim().replaceAll(" ", "");
     }
-
-	public Replique(ArrayList<Contenu> contenu, String parleur) {
-		super();
-		this.contenu = contenu;
-		this.parleur = parleur;
-	}
-
-	private ArrayList<Contenu> contenu;
-	private String parleur;
-    
-    // Constructeur
-
-    public Replique(ArrayList<Contenu> contenu) {
-        this.contenu = contenu;
-    }
-    
-    // Getters & setters
-
-    public ArrayList<Contenu> getContenu() {
-        return contenu;
-    }
-
-    public void setContenu(ArrayList<Contenu> contenu) {
-        this.contenu = contenu;
-    }
-    
-    public String getParleur() {
-		return parleur;
-	}
-
-	public void setParleur(String parleur) {
-		this.parleur = parleur;
-	}
-
-    @Override
-    public String toString() {
-        return "Replique{" + "contenu=" + contenu + ", parleur=" + parleur + '}';
-    }
-
-    
-    
-    
 }

@@ -52,6 +52,11 @@ public class Scene implements Serializable{
         this.numero = numero;
         this.dialogues = dialogues;
     }
+
+    public Scene(int numero) {
+        this.numero = numero;
+        this.dialogues = new ArrayList<>();
+    }
     
     // Getters & setters
 

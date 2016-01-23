@@ -55,7 +55,11 @@ public class Piece implements Serializable{
         this.personnages = personnages;
     }
 
-    
+    public Piece(String nom) {
+        this.nom = nom;
+        this.actes = new ArrayList<>();
+        this.personnages = new ArrayList<>();
+    }
     
     // Getters & setters
 

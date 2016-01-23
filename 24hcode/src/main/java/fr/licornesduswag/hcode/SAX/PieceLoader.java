@@ -22,70 +22,34 @@
  * THE SOFTWARE.
  */
 
-package fr.licornesduswag.hcode.data;
+package fr.licornesduswag.hcode.SAX;
 
-import java.io.Serializable;
-import java.util.ArrayList;
+import fr.licornesduswag.hcode.data.Piece;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
+import org.xml.sax.helpers.XMLReaderFactory;
 
 /**
- * Une réplique avec du contenu
+ *
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public class Replique implements Serializable{
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	public Replique() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-    public Replique(String parleur) {
-        this.parleur = parleur;
-        this.contenu = new ArrayList<>();
+public class PieceLoader {
+    public static Piece load(String uri) {
+        try {
+            XMLReader saxReader = XMLReaderFactory.createXMLReader();
+            SAXContentHandler ch = new SAXContentHandler();
+            saxReader.setContentHandler(ch);
+            saxReader.parse(uri);
+            
+            return ch.getPiece();
+            
+        } catch (SAXException | IOException ex) {
+            Logger.getLogger(PieceLoader.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return null;
     }
-
-	public Replique(ArrayList<Contenu> contenu, String parleur) {
-		super();
-		this.contenu = contenu;
-		this.parleur = parleur;
-	}
-
-	private ArrayList<Contenu> contenu;
-	private String parleur;
-    
-    // Constructeur
-
-    public Replique(ArrayList<Contenu> contenu) {
-        this.contenu = contenu;
-    }
-    
-    // Getters & setters
-
-    public ArrayList<Contenu> getContenu() {
-        return contenu;
-    }
-
-    public void setContenu(ArrayList<Contenu> contenu) {
-        this.contenu = contenu;
-    }
-    
-    public String getParleur() {
-		return parleur;
-	}
-
-	public void setParleur(String parleur) {
-		this.parleur = parleur;
-	}
-
-    @Override
-    public String toString() {
-        return "Replique{" + "contenu=" + contenu + ", parleur=" + parleur + '}';
-    }
-
-    
-    
-    
 }
