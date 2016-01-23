@@ -32,7 +32,12 @@ import java.util.ArrayList;
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
 public class Scene implements Serializable{
-    public Scene() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public Scene() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

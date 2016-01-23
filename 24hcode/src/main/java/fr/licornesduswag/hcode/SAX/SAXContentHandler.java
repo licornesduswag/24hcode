@@ -43,12 +43,7 @@ public class SAXContentHandler extends DefaultHandler {
 	private String baliseCourante="";
 
 	private String nomPiece = "";
-	
-	
 
-	
-	
-	
 	int chapitreCourant = 1; 
 	ArrayList<Scene> scenceCourante;
 	

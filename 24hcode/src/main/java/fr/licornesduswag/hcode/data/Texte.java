@@ -29,7 +29,12 @@ package fr.licornesduswag.hcode.data;
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
 public class Texte extends Contenu {
-    public Texte() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public Texte() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
