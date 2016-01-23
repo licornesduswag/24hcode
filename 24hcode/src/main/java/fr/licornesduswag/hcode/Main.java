@@ -87,7 +87,7 @@ public class Main {
         Serializer serial = new Serializer(piece);
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         try {
-			serial.toXml(new FileOutputStream(new File("test.xml")));
+			serial.toZip("test.zip");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
