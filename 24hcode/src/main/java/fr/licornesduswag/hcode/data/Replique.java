@@ -42,6 +42,11 @@ public class Replique implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
+    public Replique(String parleur) {
+        this.parleur = parleur;
+        this.contenu = new ArrayList<>();
+    }
+
 	public Replique(ArrayList<Contenu> contenu, String parleur) {
 		super();
 		this.contenu = contenu;
@@ -77,8 +82,10 @@ public class Replique implements Serializable{
 
     @Override
     public String toString() {
-        return "Replique{" + "contenu=" + contenu + '}';
+        return "Replique{" + "contenu=" + contenu + ", parleur=" + parleur + '}';
     }
+
+    
     
     
 }

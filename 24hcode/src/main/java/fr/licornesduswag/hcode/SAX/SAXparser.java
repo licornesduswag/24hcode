@@ -36,9 +36,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
  */
 public class SAXparser {
 
-    /**
-     * Contructeur.
-     */
+    
     public SAXparser(String uri) throws SAXException, IOException {
         XMLReader saxReader = XMLReaderFactory.createXMLReader();
         SAXContentHandler ch = new SAXContentHandler();
@@ -53,7 +51,7 @@ public class SAXparser {
      */
     public static void main(String[] args) {
         // TODO Auto-generated method stub
-        String uri = new File("../pieces/html/medecinMalgresLui.xml").toURI().toString();
+        String uri = new File("../pieces/html/romeoEtLaptiteCatin.xml").toURI().toString();
 
         try {
             SAXparser parser = new SAXparser(uri);

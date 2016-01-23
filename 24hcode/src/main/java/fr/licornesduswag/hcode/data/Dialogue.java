@@ -39,7 +39,7 @@ public class Dialogue implements Serializable{
 
 	public Dialogue() {
 		super();
-		// TODO Auto-generated constructor stub
+		repliques = new ArrayList<>();
 	}
 
 	public Dialogue(ArrayList<Replique> repliques, ArrayList<Personnage> personnages) {

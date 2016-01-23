@@ -24,8 +24,11 @@
 package fr.licornesduswag.hcode.SAX;
 
 import fr.licornesduswag.hcode.data.Acte;
+import fr.licornesduswag.hcode.data.Dialogue;
 import fr.licornesduswag.hcode.data.Piece;
+import fr.licornesduswag.hcode.data.Replique;
 import fr.licornesduswag.hcode.data.Scene;
+import fr.licornesduswag.hcode.data.Texte;
 import fr.licornesduswag.hcode.utils.StringCleaner;
 
 import org.xml.sax.Attributes;
@@ -48,6 +51,10 @@ public class SAXContentHandler extends DefaultHandler {
     
     private int numScene = 1;
     private Scene scene = null;
+    
+    private Dialogue dialogue;
+    
+    private Replique replique;
 
     public Piece getPiece() {
         return piece;
@@ -83,10 +90,39 @@ public class SAXContentHandler extends DefaultHandler {
                 } else if (filtered.startsWith("Scène")) {
                     // On clos l'ancienne scène et on en crée une nouvelle
                     if (scene != null) {
-                        acte.getScenes().add(scene);
+                        if (dialogue != null) {
+                            scene.getDialogues().add(dialogue);
+                        }
+                        if (acte != null) {
+                            acte.getScenes().add(scene);
+                        } else {
+                            // Scène mais pas d'acte : on crée un acte bidon
+                            acte = new Acte(0);
+                            acte.getScenes().add(scene);
+                        }
                     }
                     scene = new Scene(numScene);
+                    dialogue = new Dialogue();
                     numScene++;
+                }
+            }
+        } else if (pClass.equals("Texteajustify") || pClass.equals("Textealeft")) {
+            String contenuBalise  = new String(ch, start, length);
+            String filtered = StringCleaner.clean(contenuBalise);
+            
+            if (!filtered.equals("")) {
+                
+                if (filtered.toUpperCase().equals(filtered)) {
+                    // C'est le nom d'un personnage
+                    if (replique != null) {
+                        dialogue.getRepliques().add(replique);
+                    }
+                    replique = new Replique(filtered);
+                } else {
+                    // C'est du texte
+                    if (replique != null) {
+                        replique.getContenu().add(new Texte(filtered));
+                    }
                 }
             }
         }
@@ -100,11 +136,8 @@ public class SAXContentHandler extends DefaultHandler {
 	public void endDocument() throws SAXException {
 		// Ajout dernière scène à l'acte
         
-        if (scene != null) {
+        if (scene != null && acte != null) {
             acte.getScenes().add(scene);
-        }
-        
-        if (acte != null) {
             piece.getActes().add(acte);
         }
 
