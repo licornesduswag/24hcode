@@ -66,6 +66,13 @@ public class ActionDeplacement extends Action {
     public void setPersonnage(String personnage) {
         this.personnageName = personnage;
     }
+
+	@Override
+	public String toString() {
+		super.toString();
+		return "ActionDeplacement [x=" + x + ", y=" + y + ", personnageName=" + personnageName + "]";
+	}
+    
     
     
 }
