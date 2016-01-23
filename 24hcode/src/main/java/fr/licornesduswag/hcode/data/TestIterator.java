@@ -43,7 +43,7 @@ public class TestIterator {
         while((obj = it.next()) != null) {
         	if(obj.getClass().getName().equals("fr.licornesduswag.hcode.data.Scene")){
         		Scene s = (Scene)obj;
-        		System.out.println(s.getNumero());
+        		System.out.println(s.getNumero()+" "+obj.getClass().getName());
         	}
         	else{
         		System.out.println(obj.getClass().getName());
