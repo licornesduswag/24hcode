@@ -37,7 +37,7 @@ public class MainSAX {
      * @param args
      */
     public static void main(String[] args) {
-        Piece p = PieceLoader.load("../pieces/html/romeoEtLaptiteCatin.xml");
+        Piece p = PieceLoader.load("../pieces/html/medecinMalgresLui.xml");
         Serializer s = new Serializer(p);
     }
 
