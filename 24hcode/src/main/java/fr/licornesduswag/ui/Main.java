@@ -69,7 +69,7 @@ public class Main extends BasicGame {
 	boolean piece;
 	boolean transition;
 	boolean easterEgg;
-	ImageStore is;
+	ImageStore is = new ImageStore();
 	Object elem;
 	String str = "";
 	int acte;
