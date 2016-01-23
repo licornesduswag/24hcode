@@ -32,6 +32,11 @@ import java.io.Serializable;
  */
 public abstract class Contenu implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public Contenu() {
 		super();
 		// TODO Auto-generated constructor stub

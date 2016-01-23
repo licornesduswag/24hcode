@@ -8,6 +8,10 @@ import java.io.Serializable;
  */
 
 public class Personnage implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nom;
 	private String sprite_face;
 	private String sprite_aventure;

@@ -29,7 +29,11 @@ package fr.licornesduswag.hcode.data;
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
 public class Action extends Contenu {
-    private String description;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String description;
     
     // Constructeur
 
