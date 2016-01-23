@@ -49,7 +49,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		
 		try {
-			File fichierSortie = rtfToHTML(new FileReader(new File("C:\\Users\\Alban\\git\\24hcode\\pieces\\MOLIERE-Le_medecin_malgre_lui-[Atramenta.net].rtf")), "fichier", "html" );
+			File fichierSortie = rtfToHTML(new FileReader(new File("C:\\Users\\Alban\\git\\24hcode\\pieces\\WILLIAM_SHAKESPEARE-Romeo_et_juliette-[Atramenta.net].rtf")), "romeoEtLaptiteCatin", "html" );
 			
 			System.out.println();
 		} catch (FileNotFoundException e) {
