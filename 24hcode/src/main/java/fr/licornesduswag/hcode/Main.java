@@ -25,8 +25,6 @@
 package fr.licornesduswag.hcode;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -123,7 +121,7 @@ public class Main {
         Serializer serial = new Serializer(piece);
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         try {
-			serial.toZip("test.zip");
+			serial.toZip("test.zip","../sprites/Medecin malgre lui/Persos/");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
