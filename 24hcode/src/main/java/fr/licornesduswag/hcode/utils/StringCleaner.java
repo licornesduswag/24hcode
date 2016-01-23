@@ -38,8 +38,9 @@ public class StringCleaner {
         ArrayList<String> filteredLines = new ArrayList<>();
 
         for (int i = 0; i < lines.length; i++) {
-            if (!lines[i].equals("")) {
-                filteredLines.add(lines[i].trim());
+            String line = lines[i].trim();
+            if (!line.equals("")) {
+                filteredLines.add(line);
             }
         }
 
@@ -48,6 +49,15 @@ public class StringCleaner {
             filtered += s;
         }
         
-        return filtered;
+        return trim(filtered);
+    }
+    
+    /**
+     * Retire les espace ET les espaces insécables
+     * @param input
+     * @return 
+     */
+    public static String trim(String input) {
+        return input.trim().replaceAll(" ", "");
     }
 }

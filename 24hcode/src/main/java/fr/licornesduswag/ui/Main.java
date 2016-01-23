@@ -54,8 +54,11 @@ public class Main extends BasicGame {
     Keyboard k = null;
     boolean test;
     boolean piece;
+    boolean transition;
     Object elem;
     String str = "";
+    int acte;
+    int scene;
     PieceIterator pi = new PieceIterator(creerPiece());
     public Main() {
         super("24hcode");
@@ -65,7 +68,6 @@ public class Main extends BasicGame {
     public void init(GameContainer gc) throws SlickException {
         gc.setShowFPS(false);
         k = new Keyboard(gc);
-	// load font from a .ttf file
 	try {
 		InputStream inputStream	= ResourceLoader.getResourceAsStream("Ressources/Fonts/paper.ttf");
  
@@ -85,17 +87,26 @@ public class Main extends BasicGame {
         }
         else if(k.keyDown() && !test){
            elem = pi.next();
+           if(elem == null){
+               str = "Fin";
+               return;
+           }
            switch(elem.getClass().getName()){
                 case("fr.licornesduswag.hcode.data.Acte"):
                    Acte a = (Acte)elem;
                    str = "Acte " + a.getNumero();
+                   transition = true;
+                   acte = a.getNumero();
                    break;
                 case("fr.licornesduswag.hcode.data.Scene"):
                    Scene s = (Scene)elem;
                    str = "Scène " + s.getNumero();
+                   transition = true;
+                   scene = s.getNumero();
                    break;
                 default:
-                   str = "Autre";               
+                   str = "Autre"; 
+                   transition = false;
            }
         }
         test = !k.keyUp();
@@ -110,11 +121,18 @@ public class Main extends BasicGame {
             grphcs.drawString("24h du code", 10, 10);
             grphcs.drawString("Espace pour voir la pièce", 10, 550);
         }
-        else{
-            grphcs.setBackground(Color.cyan);
-            grphcs.setColor(Color.darkGray);
+        else if (transition){
+            grphcs.setBackground(Color.black);
+            grphcs.setColor(Color.lightGray);
             grphcs.setFont(font);
-            grphcs.drawString(str, 10, 10);
+            grphcs.drawString(str, 400, 250);
+        }
+        else{
+        	grphcs.setBackground(Color.white);
+        	grphcs.setColor(Color.black);
+        	grphcs.drawString("Acte " + acte, 10, 10);
+        	grphcs.drawString("Scene " + scene, 710, 10);
+        	grphcs.drawString(str, 10, 560);
         }
     }
     
