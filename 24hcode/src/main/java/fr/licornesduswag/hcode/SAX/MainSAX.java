@@ -23,42 +23,22 @@
  */
 package fr.licornesduswag.hcode.SAX;
 
-import java.io.File;
-import java.io.IOException;
-
-import org.xml.sax.SAXException;
-import org.xml.sax.XMLReader;
-import org.xml.sax.helpers.XMLReaderFactory;
+import fr.licornesduswag.hcode.data.Piece;
+import fr.licornesduswag.hcode.data.Serializer;
+import java.io.FileOutputStream;
 
 /**
  * @author Alban
  *
  */
-public class SAXparser {
-
-    
-    public SAXparser(String uri) throws SAXException, IOException {
-        XMLReader saxReader = XMLReaderFactory.createXMLReader();
-        SAXContentHandler ch = new SAXContentHandler();
-        saxReader.setContentHandler(ch);
-        saxReader.parse(uri);
-        
-        System.out.println(ch.getPiece());
-    }
+public class MainSAX {
 
     /**
      * @param args
      */
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
-        String uri = new File("../pieces/html/romeoEtLaptiteCatin.xml").toURI().toString();
-
-        try {
-            SAXparser parser = new SAXparser(uri);
-            
-        } catch (SAXException | IOException e) {
-            e.printStackTrace();
-        }
+        Piece p = PieceLoader.load("../pieces/html/romeoEtLaptiteCatin.xml");
+        Serializer s = new Serializer(p);
     }
 
 }
