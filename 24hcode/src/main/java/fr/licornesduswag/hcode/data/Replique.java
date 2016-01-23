@@ -32,4 +32,27 @@ import java.util.ArrayList;
  */
 public class Replique {
     private ArrayList<Contenu> contenu;
+    
+    // Constructeur
+
+    public Replique(ArrayList<Contenu> contenu) {
+        this.contenu = contenu;
+    }
+    
+    // Getters & setters
+
+    public ArrayList<Contenu> getContenu() {
+        return contenu;
+    }
+
+    public void setContenu(ArrayList<Contenu> contenu) {
+        this.contenu = contenu;
+    }
+
+    @Override
+    public String toString() {
+        return "Replique{" + "contenu=" + contenu + '}';
+    }
+    
+    
 }

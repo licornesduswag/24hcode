@@ -24,12 +24,51 @@
 
 package fr.licornesduswag.hcode;
 
+import fr.licornesduswag.hcode.data.Acte;
+import fr.licornesduswag.hcode.data.Contenu;
+import fr.licornesduswag.hcode.data.Dialogue;
+import fr.licornesduswag.hcode.data.Piece;
+import fr.licornesduswag.hcode.data.Replique;
+import fr.licornesduswag.hcode.data.Scene;
+import fr.licornesduswag.hcode.data.Texte;
+import java.util.ArrayList;
+
 /**
- *
+ * Un main de test
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
 public class Main {
     public static void main(String[] args) {
         System.out.println("Salut !");
+        
+        // Texte
+        Texte txt = new Texte("Roméo, oh Roméo !");
+        
+        // Réplique
+        ArrayList<Contenu> contenus = new ArrayList<>();
+        contenus.add(txt);
+        Replique rep = new Replique(contenus);
+        
+        // Dialogue
+        ArrayList<Replique> repliques = new ArrayList<>();
+        repliques.add(rep);
+        Dialogue dial = new Dialogue(repliques);
+        
+        // Scene
+        ArrayList<Dialogue> dialogues = new ArrayList<>();
+        dialogues.add(dial);
+        Scene scene = new Scene(1, dialogues);
+        
+        // Acte
+        ArrayList<Scene> scenes = new ArrayList<>();
+        scenes.add(scene);
+        Acte acte = new Acte(1, scenes);
+        
+        // Pièce
+        ArrayList<Acte> actes = new ArrayList<>();
+        actes.add(acte);
+        Piece piece = new Piece("Romeo et Juliette", actes);
+        
+        System.out.println(piece);
     }
 }

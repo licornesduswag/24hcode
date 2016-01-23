@@ -28,6 +28,29 @@ package fr.licornesduswag.hcode.data;
  * Une action pendant la pièce
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public class Action {
+public class Action extends Contenu {
+    private String description;
+    
+    // Constructeur
 
+    public Action(String description) {
+        this.description = description;
+    }
+    
+    // Getters & setters
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Action{" + "description=" + description + '}';
+    }
+    
+    
 }

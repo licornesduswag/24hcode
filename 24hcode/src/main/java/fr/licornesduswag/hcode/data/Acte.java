@@ -31,5 +31,39 @@ import java.util.ArrayList;
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
 public class Acte {
+    private int numero;
+    
     private ArrayList<Scene> scenes;
+    
+    // Constructeur
+
+    public Acte(int numero, ArrayList<Scene> scenes) {
+        this.numero = numero;
+        this.scenes = scenes;
+    }
+    
+    // Getters & setters
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public ArrayList<Scene> getScenes() {
+        return scenes;
+    }
+
+    public void setScenes(ArrayList<Scene> scenes) {
+        this.scenes = scenes;
+    }
+
+    @Override
+    public String toString() {
+        return "Acte{" + "numero=" + numero + ", scenes=" + scenes + '}';
+    }
+    
+    
 }
