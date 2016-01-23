@@ -23,11 +23,18 @@
  */
 package fr.licornesduswag.hcode.SAX;
 
+import java.util.ArrayList;
+
 import org.xml.sax.Attributes;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.Locator;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.LocatorImpl;
+
+import fr.licornesduswag.hcode.data.Acte;
+import fr.licornesduswag.hcode.data.Contenu;
+import fr.licornesduswag.hcode.data.Replique;
+import fr.licornesduswag.hcode.data.Texte;
 /**
  * @author Alban
  *
@@ -35,6 +42,8 @@ import org.xml.sax.helpers.LocatorImpl;
 public class SAXContentHandler implements ContentHandler{
 
 	private Locator locator;
+	private ArrayList<Acte> listeActes = new ArrayList<>();
+	
 
 
 	/**
@@ -45,7 +54,6 @@ public class SAXContentHandler implements ContentHandler{
 		super();
 		locator = new LocatorImpl();
 	}
-
 
 
 
@@ -60,7 +68,11 @@ public class SAXContentHandler implements ContentHandler{
 	@Override
 	public void characters(char[] ch, int start, int length) throws SAXException {
 		// TODO Auto-generated method stub
-		System.out.println("#PCDATA : " + new String(ch, start, length));
+		String contenuBalise = new String(ch, start, length);
+		System.out.println("#PCDATA : " + contenuBalise);
+		ArrayList<Contenu> liste = new ArrayList<Contenu>();
+		liste.add(new Texte(contenuBalise));
+		Replique r = new Replique(liste);
 
 	}
 
@@ -82,8 +94,9 @@ public class SAXContentHandler implements ContentHandler{
 	public void endElement(String uri, String localName, String qName) throws SAXException {
 		// TODO Auto-generated method stub
 		System.out.print("Fermeture de la balise : " + localName);
-
-		if ( ! "".equals(uri)) { // name space non null
+		
+		// name space non null
+		if ( ! "".equals(uri)) { 
 			System.out.print("appartenant a l'espace de nommage : " + localName);
 		}
 
@@ -186,7 +199,9 @@ public class SAXContentHandler implements ContentHandler{
 
 		System.out.println("  Attributs de la balise : ");
 
-		for (int index = 0; index < atts.getLength(); index++) { // on parcourt la liste des attributs
+		// on parcourt la liste des attributs
+		for (int index = 0; index < atts.getLength(); index++) { 
+
 			System.out.println("     - " +  atts.getLocalName(index) + " = " + atts.getValue(index));
 		}
 
