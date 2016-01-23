@@ -24,10 +24,17 @@
 
 package fr.licornesduswag.hcode.data;
 
+import java.io.Serializable;
+
 /**
  * Un contenu de réplique abstrait (soit un texte soit une action)
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public abstract class Contenu {
+public abstract class Contenu implements Serializable{
+
+	public Contenu() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 }

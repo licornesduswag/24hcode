@@ -24,6 +24,12 @@
 
 package fr.licornesduswag.hcode;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+
 import fr.licornesduswag.hcode.data.Acte;
 import fr.licornesduswag.hcode.data.Contenu;
 import fr.licornesduswag.hcode.data.Dialogue;
@@ -31,8 +37,8 @@ import fr.licornesduswag.hcode.data.Personnage;
 import fr.licornesduswag.hcode.data.Piece;
 import fr.licornesduswag.hcode.data.Replique;
 import fr.licornesduswag.hcode.data.Scene;
+import fr.licornesduswag.hcode.data.Serializer;
 import fr.licornesduswag.hcode.data.Texte;
-import java.util.ArrayList;
 
 /**
  * Un main de test
@@ -76,6 +82,16 @@ public class Main {
         personnages.add(perso1);
         personnages.add(perso2);
         Piece piece = new Piece("Romeo et Juliette", actes, personnages);
+        
+        //Serializer
+        Serializer serial = new Serializer(piece);
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        try {
+			serial.toXml(new FileOutputStream(new File("test.xml")));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         
         System.out.println(piece);
     }

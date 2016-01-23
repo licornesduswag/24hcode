@@ -24,14 +24,20 @@
 
 package fr.licornesduswag.hcode.data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Un dialogue, contenant plusieurs répliques
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public class Dialogue {
-    private ArrayList<Replique> repliques;
+public class Dialogue implements Serializable{
+    public Dialogue() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	private ArrayList<Replique> repliques;
     
     // Constructeur
 

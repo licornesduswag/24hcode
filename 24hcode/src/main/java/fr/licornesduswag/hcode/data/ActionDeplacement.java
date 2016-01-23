@@ -24,51 +24,46 @@
 
 package fr.licornesduswag.hcode.data;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-
 /**
- * Une scène de la pièce, contenant plusieurs dialogues
+ * Déplace un personnage sur la scène
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public class Scene implements Serializable{
-    public Scene() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+public class ActionDeplacement {
+    private int x, y;
+    private String personnageName;
 
-	private int numero;
-    
-    private ArrayList<Dialogue> dialogues;
-    
     // Constructeur
-
-    public Scene(int numero, ArrayList<Dialogue> dialogues) {
-        this.numero = numero;
-        this.dialogues = dialogues;
+    
+    public ActionDeplacement(int x, int y, String personnageName) {
+        this.x = x;
+        this.y = y;
+        this.personnageName = personnageName;
     }
     
     // Getters & setters
 
-    public int getNumero() {
-        return numero;
+    public int getX() {
+        return x;
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public void setX(int x) {
+        this.x = x;
     }
 
-    public ArrayList<Dialogue> getDialogues() {
-        return dialogues;
+    public int getY() {
+        return y;
     }
 
-    public void setDialogues(ArrayList<Dialogue> dialogues) {
-        this.dialogues = dialogues;
+    public void setY(int y) {
+        this.y = y;
     }
 
-    @Override
-    public String toString() {
-        return "Scene{" + "numero=" + numero + ", dialogues=" + dialogues + '}';
+    public String getPersonnage() {
+        return personnageName;
+    }
+
+    public void setPersonnage(String personnage) {
+        this.personnageName = personnage;
     }
     
     

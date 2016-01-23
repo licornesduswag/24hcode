@@ -36,34 +36,31 @@ import org.xml.sax.helpers.XMLReaderFactory;
  */
 public class SAXparser {
 
-	
-	/**
+    /**
      * Contructeur.
      */
     public SAXparser(String uri) throws SAXException, IOException {
-                    XMLReader saxReader = XMLReaderFactory.createXMLReader();
-                    saxReader.setContentHandler(new SAXContentHandler());
-                    saxReader.parse(uri);
+        XMLReader saxReader = XMLReaderFactory.createXMLReader();
+        saxReader.setContentHandler(new SAXContentHandler());
+        saxReader.parse(uri);
     }
-	
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		String uri = new File("C:\\Users\\Alban\\git\\24hcode\\pieces\\html\\medecinMalgresLui.xml").toURI().toString();
-		
-		try {
-			SAXparser parser = new SAXparser(uri);
-		} catch (SAXException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	
+
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        String uri = new File("../pieces/html/medecinMalgresLui.xml").toURI().toString();
+
+        try {
+            SAXparser parser = new SAXparser(uri);
+        } catch (SAXException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
 }
