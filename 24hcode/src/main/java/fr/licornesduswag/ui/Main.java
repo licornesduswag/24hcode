@@ -27,8 +27,6 @@ package fr.licornesduswag.ui;
 import java.io.InputStream;
 import fr.licornesduswag.ui.Keyboard;
 import fr.licornesduswag.hcode.data.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import java.awt.Font;
@@ -38,11 +36,8 @@ import java.util.ArrayList;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Input;
-import org.newdawn.slick.KeyListener;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
-import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.util.ResourceLoader;
 
 /**
