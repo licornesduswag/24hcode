@@ -1,1 +1,6 @@
-/24hcode/target/
+/24hcode/target/Thumbs.db
+target
+/24hcode/bin/
+/24hcode/.settings
+/24hcode/.project
+/24hcode/.classpath
