@@ -69,26 +69,31 @@ public class PieceIterator {
 			return piece.getActes().get(0);
 		}
 
+
+		//première scene 
 		if(!shownScene){
 			shownScene = true;
 			return piece.getActes().get(0).getScenes().get(0);
 		}
 
+/*		//premier dialogue
 		if(!shownDialogue){
 			shownDialogue = true;
 			return piece.getActes().get(0).getScenes().get(0).getDialogues().get(0);
 		}
 
+		//premiere replique
 		if(!shownReplique){
 			shownReplique = true;
 			return piece.getActes().get(0).getScenes().get(0).getDialogues().get(0).getRepliques().get(0);
 		}
 
+		//premier contenu (Texte ou action for now)
 		if(!shownContent){
 			shownContent = true;
 			return piece.getActes().get(0).getScenes().get(0).getDialogues().get(0).getRepliques().get(0).getContenu().get(0);
 		}
-		
+
 		if(currentActe < piece.getActes().size()){
 			if(currentScene < piece.getActes().get(currentActe).getScenes().size()){
 				if(currentDialogue < piece.getActes().get(currentActe).getScenes().get(currentScene).getDialogues().size()){
@@ -98,44 +103,104 @@ public class PieceIterator {
 							return piece.getActes().get(currentActe).getScenes().get(currentScene).getDialogues().get(currentDialogue).getRepliques().get(currentReplique).getContenu().get(currentContent++);
 						}else{
 							//plus de contenu dispo, on essaye d'afficher la réplique suivante
-							currentReplique++;
 							if(currentReplique < piece.getActes().get(currentActe).getScenes().get(currentScene).getDialogues().get(currentDialogue).getRepliques().size()){
-								return piece.getActes().get(currentActe).getScenes().get(currentScene).getDialogues().get(currentDialogue).getRepliques().get(currentReplique);
+								currentContent = 0;
+								return piece.getActes().get(currentActe).getScenes().get(currentScene).getDialogues().get(currentDialogue).getRepliques().get(currentReplique++);
 							}else{
+
 								//plus de réplique à afficher, on essaye d'afficher le dialogue suivant
-								currentDialogue++;
 								if(currentDialogue < piece.getActes().get(currentActe).getScenes().get(currentScene).getDialogues().size()){
-									return piece.getActes().get(currentActe).getScenes().get(currentScene).getDialogues().get(currentDialogue);
+									//du coup on reboot la réplique courante
+									currentReplique = 0;
+									return piece.getActes().get(currentActe).getScenes().get(currentScene).getDialogues().get(currentDialogue++);
+								}else{
+
+									//plus de dialogue dispo, on essaye d'afficher la scene suivante
+									if(currentScene < piece.getActes().get(currentActe).getScenes().size() ){
+										//du coup on reboot le currentDialogue
+										currentDialogue = 0;
+										return piece.getActes().get(currentActe).getScenes().get(currentScene++);
+									}else{
+
+										//plus de scene dispo, on essaye d'afficher l'acte suivant
+										currentActe++;
+										if (currentActe  < piece.getActes().size()) {
+											//du coup on reboot la scène courante
+											currentScene = 0;
+											return piece.getActes().get(currentActe);
+										}else {
+
+											// Plus d'acte à afficher, c'est la fin
+											System.out.println("il n'y a plus d'acte");
+											return null;
+										}
+									}
 								}
 							}
 						}
 					}
 				}
 			}
+		}*/
+
+
+
+		/*if (currentActe < piece.getActes().size()) {
+
+
+			if (currentScene < piece.getActes().get(currentActe).getScenes().size()) {
+				// On peut afficher la scène suivante dans l'acte courant
+				return piece.getActes().get(currentActe).getScenes().get(currentScene++);
+			}
+			else {
+				// Plus de scènes disponibles, on essaye d'afficher l'acte suivant
+				currentScene = 0;
+				currentActe++;
+				if (currentActe  < piece.getActes().size()) {
+
+					return piece.getActes().get(currentActe);
+				} 
+				else {
+					// Plus d'acte à afficher, c'est la fin
+					return null;
+				}
+			}
+		}*/
+		
+		
+		if (currentActe < piece.getActes().size()) {
+			if (currentScene < piece.getActes().get(currentActe).getScenes().size()) {
+				if(currentDialogue < piece.getActes().get(currentActe).getScenes().get(currentScene).getDialogues().size()){
+					// On peut afficher la scène suivante dans l'acte courant
+					return piece.getActes().get(currentActe).getScenes().get(currentScene).getDialogues().get(currentDialogue++);
+				}else{
+					currentDialogue = 0;
+					currentScene ++;
+					if(currentScene <piece.getActes().get(currentActe).getScenes().size()){
+						return piece.getActes().get(currentActe).getScenes().get(currentScene);
+					}
+				}
+			}
+			else {
+				// Plus de scènes disponibles, on essaye d'afficher l'acte suivant
+				currentScene = 0;
+				currentActe++;
+				if (currentActe  < piece.getActes().size()) {
+
+					return piece.getActes().get(currentActe);
+				} 
+				else {
+					// Plus d'acte à afficher, c'est la fin
+					return null;
+				}
+			}
 		}
 
 
-		if (currentActe < piece.getActes().size()) {
-            if (currentScene < piece.getActes().get(currentActe).getScenes().size()) {
-                // On peut afficher la scène suivante dans l'acte courant
-                return piece.getActes().get(currentActe).getScenes().get(currentScene++);
-            }
-            else {
-                // Plus de scènes disponibles, on essaye d'afficher l'acte suivant
-                currentActe++;
-                if (currentActe  < piece.getActes().size()) {
-                    return piece.getActes().get(currentActe);
-                } 
-                else {
-                    // Plus d'acte à afficher, c'est la fin
-                    return null;
-                }
-            }
-        } 
-		
-		
-        else {
-            return null;
-        }
+
+
+		return null;
+
+
 	}
 }

@@ -23,7 +23,7 @@
  */
 package fr.licornesduswag.hcode.data;
 
-import java.util.ArrayList;
+import fr.licornesduswag.hcode.SAX.PieceLoader;
 
 /**
  *
@@ -35,53 +35,21 @@ public class TestIterator {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        PieceIterator it = new PieceIterator(fakePiece());
+    	Piece p = PieceLoader.load("../pieces/html/medecinMalgresLui.xml");
+        PieceIterator it = new PieceIterator(p);
         
         Object obj;
         
         while((obj = it.next()) != null) {
-            System.out.println(obj.getClass().getName());
+        	if(obj.getClass().getName().equals("fr.licornesduswag.hcode.data.Scene")){
+        		Scene s = (Scene)obj;
+        		System.out.println(s.getNumero());
+        	}
+        	else{
+        		System.out.println(obj.getClass().getName());
+        	}
         }
     }
     
-    
-    public static Piece fakePiece() {
-        // Texte
-        Texte txt = new Texte("Roméo, oh Roméo !");
-        
-        //Personnage
-        Personnage perso1 = new Personnage("Roméo", "toto.png", "tata.png");
-        Personnage perso2 = new Personnage("Juliette", "toto.png", "tata.png");
-        
-        // Réplique
-        ArrayList<Contenu> contenus = new ArrayList<>();
-        contenus.add(txt);
-        Replique rep = new Replique(contenus);
-        
-        // Dialogue
-        ArrayList<Replique> repliques = new ArrayList<>();
-        repliques.add(rep);
-        Dialogue dial = new Dialogue(repliques);
-        
-        // Scene
-        ArrayList<Dialogue> dialogues = new ArrayList<>();
-        dialogues.add(dial);
-        Scene scene = new Scene(1, dialogues);
-        
-        // Acte
-        ArrayList<Scene> scenes = new ArrayList<>();
-        scenes.add(scene);
-        Acte acte = new Acte(1, scenes);
-        
-        // Pièce
-        ArrayList<Acte> actes = new ArrayList<>();
-        ArrayList<Personnage> personnages = new ArrayList<>();
-        actes.add(acte);
-        personnages.add(perso1);
-        personnages.add(perso2);
-        Piece piece = new Piece("Romeo et Juliette", actes, personnages);
-        
-        return piece;
-    }
     
 }
