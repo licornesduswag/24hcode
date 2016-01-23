@@ -22,8 +22,6 @@ import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
 
-
-
 /**
  * Classe serialisant nos objets java en XML
  * @author Kelian Duval (Spritix) 
@@ -37,7 +35,7 @@ public class Serializer implements Serializable{
 	private String ZIP_IMAGE_DIR = "sprites/"; // Ne pas oublier le slash Ã  la fin du nom de dossier
 
 	private Piece piece;
-
+	
 	public Serializer() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -147,7 +145,7 @@ public class Serializer implements Serializable{
 	 * @return Le jeu chargÃ©
 	 * @throws IOException 
 	 */
-	public static Serializer fromZip(String filepath) throws IOException {
+	public Serializer fromZip(String filepath, ImageStoreInterface imgStore) throws IOException {
 		Serializer serial = null;
 
 		// Ouverture du fichier zip
@@ -162,6 +160,13 @@ public class Serializer implements Serializable{
 				if (e.getName().equals(ZIP_XML_FILE)) {
 					serial = fromXml(zf.getInputStream(e));
 				}
+				// Sinon si c'est une image on la charge
+                else if (e.getName().startsWith("sprites/")) {
+                	if(!e.getName().endsWith(".db"))
+                	{
+                        imgStore.addImage(e.getName().replaceAll("sprites/", ""), zf.getInputStream(e));
+                	}
+                }
 			}
 		}
 

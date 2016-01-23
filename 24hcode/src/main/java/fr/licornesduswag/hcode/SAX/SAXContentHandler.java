@@ -80,10 +80,15 @@ public class SAXContentHandler extends DefaultHandler {
             if (!filtered.equals("")) {
                 if (filtered.startsWith("Acte")) {
                     // On clos l'ancien acte et on en crée un nouveau
+                    if (scene != null) {
+                        acte.getScenes().add(scene);
+                        scene = null;
+                    }
                     if (acte != null) {
                         piece.getActes().add(acte);
                     }
                     acte = new Acte(numActe);
+                    //System.out.println("On a créé un acte " + filtered);
                     numActe++;
                     numScene = 1;
                     
@@ -101,6 +106,7 @@ public class SAXContentHandler extends DefaultHandler {
                             acte.getScenes().add(scene);
                         }
                     }
+                    //System.out.println("On crée une nouvelle scène " + filtered);
                     scene = new Scene(numScene);
                     dialogue = new Dialogue();
                     numScene++;
