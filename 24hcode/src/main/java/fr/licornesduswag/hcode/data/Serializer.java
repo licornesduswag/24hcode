@@ -22,8 +22,6 @@ import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
 
-
-
 /**
  * Classe serialisant nos objets java en XML
  * @author Kelian Duval (Spritix) 
