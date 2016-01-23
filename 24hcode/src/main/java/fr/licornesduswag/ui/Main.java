@@ -24,21 +24,32 @@
 
 package fr.licornesduswag.ui;
 
-import java.io.InputStream;
-import fr.licornesduswag.ui.Keyboard;
-import fr.licornesduswag.hcode.data.*;
-import org.newdawn.slick.AppGameContainer;
-import org.newdawn.slick.BasicGame;
 import java.awt.Font;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+
+import org.newdawn.slick.AppGameContainer;
+import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.util.ResourceLoader;
+
+import fr.licornesduswag.hcode.data.Acte;
+import fr.licornesduswag.hcode.data.Contenu;
+import fr.licornesduswag.hcode.data.Dialogue;
+import fr.licornesduswag.hcode.data.ImageStore;
+import fr.licornesduswag.hcode.data.Personnage;
+import fr.licornesduswag.hcode.data.Piece;
+import fr.licornesduswag.hcode.data.PieceIterator;
+import fr.licornesduswag.hcode.data.Replique;
+import fr.licornesduswag.hcode.data.Scene;
+import fr.licornesduswag.hcode.data.Serializer;
+import fr.licornesduswag.hcode.data.Texte;
 
 /**
  *
@@ -61,6 +72,7 @@ public class Main extends BasicGame {
 
     @Override
     public void init(GameContainer gc) throws SlickException {
+    	ImageStore is;
         gc.setShowFPS(false);
         k = new Keyboard(gc);
 	try {
@@ -69,7 +81,10 @@ public class Main extends BasicGame {
 		Font awtFont = Font.createFont(Font.TRUETYPE_FONT, inputStream);
 		awtFont = awtFont.deriveFont(32f); // set font size
 		font = new TrueTypeFont(awtFont, true);
- 
+		
+		Piece piece = creerPiece();
+        is = getSpriteFromZip(piece);
+        is.printAll(); 
 	} catch (Exception e) {
 		e.printStackTrace();
 	}	
@@ -142,7 +157,7 @@ public class Main extends BasicGame {
         }
     }
     
-    public Piece creerPiece(){
+    public static Piece creerPiece(){
         System.out.println("Salut !");
          
         // Texte
@@ -211,22 +226,24 @@ public class Main extends BasicGame {
         dial= new Dialogue(repliques, personnages);
         System.out.println(piece);
         
-        
-        
-        
-        
-        
-        //Serializer
+        System.out.println(piece);
+        return(piece);
+    } 
+    
+    public static ImageStore getSpriteFromZip(Piece piece){
+    	ImageStore is = new ImageStore();
+    	//Serializer
         Serializer serial = new Serializer(piece);
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         try {
 			serial.toZip("test.zip","../sprites/Medecin malgre lui/Persos/");
+			serial.fromZip("test.zip", is);
+			is.printAll();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-        
-        System.out.println(piece);
-        return(piece);
-    }    
+		}    	
+        return is;
+    }
+    
 }
