@@ -36,10 +36,10 @@ import org.newdawn.slick.SlickException;
  *
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public class TestGame extends BasicGame {
+public class Menu extends BasicGame {
 
-    public TestGame() {
-        super("test");
+    public Menu() {
+        super("24hcode");
     }
 
     @Override
@@ -59,11 +59,11 @@ public class TestGame extends BasicGame {
     
     public static void main(String[] args) {
         try {
-            AppGameContainer app = new AppGameContainer(new TestGame());
-            app.setDisplayMode(600, 400, false);
+            AppGameContainer app = new AppGameContainer(new Menu());
+            app.setDisplayMode(800, 600, false);
             app.start();
         } catch (SlickException ex) {
-            Logger.getLogger(TestGame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
