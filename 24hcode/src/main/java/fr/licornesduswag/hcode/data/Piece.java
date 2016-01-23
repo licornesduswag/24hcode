@@ -25,7 +25,7 @@
 package fr.licornesduswag.hcode.data;
 
 /**
- *
+ * Une pièce, contenant des actes
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
 public class Piece {
