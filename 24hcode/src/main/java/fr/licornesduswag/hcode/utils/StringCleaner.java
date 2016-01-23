@@ -32,7 +32,8 @@ import java.util.ArrayList;
  */
 public class StringCleaner {
     public static String clean(String input) {
-        String trimmed = input.trim();
+        // Replace espace insécable
+        String trimmed = input.trim().replaceAll(" ", " ");
 
         String[] lines = trimmed.split("\n");
         ArrayList<String> filteredLines = new ArrayList<>();
@@ -40,13 +41,18 @@ public class StringCleaner {
         for (int i = 0; i < lines.length; i++) {
             String line = lines[i].trim();
             if (!line.equals("")) {
-                filteredLines.add(line);
+                filteredLines.add(line); 
             }
         }
 
         String filtered = "";
-        for (String s : filteredLines) {
-            filtered += s;
+        
+        for (int i = 0; i < filteredLines.size(); i++) {
+            String elementAt = filteredLines.get(i);
+            filtered += elementAt;
+            if (i != filteredLines.size() - 1) {
+                filtered += " ";
+            }
         }
         
         return trim(filtered);

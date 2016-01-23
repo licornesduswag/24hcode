@@ -30,7 +30,7 @@ import java.io.Serializable;
  * Un contenu de réplique abstrait (soit un texte soit une action)
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public abstract class Contenu implements Serializable{
+public abstract class Contenu implements Serializable {
 
 	/**
 	 * 
