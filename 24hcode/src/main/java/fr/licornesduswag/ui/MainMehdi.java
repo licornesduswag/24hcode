@@ -43,7 +43,6 @@ import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.util.ResourceLoader;
 
-import fr.licornesduswag.hcode.SAX.PieceLoader;
 import fr.licornesduswag.hcode.data.Acte;
 import fr.licornesduswag.hcode.data.ActionDeplacement;
 import fr.licornesduswag.hcode.data.Contenu;
@@ -226,6 +225,7 @@ public class MainMehdi extends BasicGame {
 			if(k.keyDown() && !test && !piece){
 				piece = true;
 				Music baton = new Music("Ressources/coups.ogg");
+
 				baton.play();
 			}
 			else if(k.keyDown() && !test){
@@ -236,13 +236,17 @@ public class MainMehdi extends BasicGame {
 						}while(elem.getClass().getName().equals("fr.licornesduswag.hcode.data.Texte")&& it.hasNext());						
 						switch(elem.getClass().getName()){
 						case("fr.licornesduswag.hcode.data.Acte"):
+							
+	
 							Acte a = (Acte)elem;
-						str = "Acte " + a.getNumero();
-						transition = true;
-						acte = a.getNumero();
-						nbScene = a.getScenes().size();
+							str = "Acte " + a.getNumero();
+							transition = true;
+							acte = a.getNumero();
+							nbScene = a.getScenes().size();
 						break;
 						case("fr.licornesduswag.hcode.data.Scene"):
+							Music applause = new Music("Ressources/Applause.ogg");
+						applause.play();
 							Scene s = (Scene)elem;
 						scene = s.getNumero();
 						str = "Scène " + scene;
@@ -325,7 +329,7 @@ public class MainMehdi extends BasicGame {
 
 	@Override
 	public void render(GameContainer gc, Graphics grphcs) throws SlickException {
-		
+
 		grphcs.drawAnimation(spriteSheets.get(Piece.toutLesPersonnagesDuMonde.
 				get("martine"))[direction + (moving ? 4 : 0)], Piece.toutLesPersonnagesDuMonde.
 				get("martine").getxMap()-16, Piece.toutLesPersonnagesDuMonde.
@@ -334,7 +338,7 @@ public class MainMehdi extends BasicGame {
 				get("sganarelle"))[direction + (moving ? 4 : 0)], Piece.toutLesPersonnagesDuMonde.
 				get("sganarelle").getxMap()-16, Piece.toutLesPersonnagesDuMonde.
 				get("sganarelle").getyMap()-100);
-		
+
 		if(easterEgg){
 			Image img = new Image("Ressources/Images/Unicorn.jpg");
 			img.draw();
