@@ -369,7 +369,7 @@ public class MainMehdi extends BasicGame {
 				grphcs.drawAnimation(spriteSheets.get(Piece.toutLesPersonnagesDuMonde.
 						get("sganarelle"))[direction + (moving ? 4 : 0)], Piece.toutLesPersonnagesDuMonde.
 						get("sganarelle").getxMap()-16, Piece.toutLesPersonnagesDuMonde.
-						get("sganarelle").getyMap()-100);
+						get("sganarelle").getyMap()-30);
 				grphcs.setColor(Color.black);
 				grphcs.drawString("Acte " + acte+"/"+nbActe, 10, 10);
 				grphcs.drawString("Scene " + scene+"/"+nbScene, 710, 10);
