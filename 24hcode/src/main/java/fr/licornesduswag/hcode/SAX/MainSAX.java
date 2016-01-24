@@ -38,7 +38,7 @@ public class MainSAX {
      * @param args
      */
     public static void main(String[] args) {
-        Piece p = PieceLoader.load("../pieces/html/medecinMalgresLui.xml");
+        Piece p = PieceLoader.load("../pieces/html/romeoEtLaptiteCatin.xml");
         
         for (Acte a : p.getActes()) {
             System.out.println("acte "+a.getNumero());
@@ -46,6 +46,7 @@ public class MainSAX {
                 System.out.println("scene " + s.getNumero());
             }
         }
+        
         //Serializer s = new Serializer(p);
 
     }
