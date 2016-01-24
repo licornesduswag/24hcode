@@ -55,7 +55,7 @@ public class StringCleaner {
             }
         }
         
-        return trim(filtered);
+        return trim(filtered).replaceAll("’", "'");
     }
     
     /**

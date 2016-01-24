@@ -149,15 +149,10 @@ public class Main extends BasicGame {
 					break;
 					case("fr.licornesduswag.hcode.data.Replique"):
 						
+						
+						
 						Replique r = (Replique)elem;
 						str = r.getParleur() + " : ";
-						if(r.getParleur().equals("MARTINE")){
-							persoCourrant = martine;
-						}else if(r.getParleur().equals("SGANARELLE")){
-							persoCourrant = sganarelle;
-						}else{
-							persoCourrant = sganarelle;
-						}
 						
 						switch (r.getParleur()) {
 						case "MARTINE":
