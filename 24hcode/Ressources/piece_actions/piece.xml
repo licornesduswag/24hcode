@@ -1013,7 +1013,39 @@
                     <object class="java.util.ArrayList">
                      <void method="add">
                       <object class="fr.licornesduswag.hcode.data.Texte">
-                       <void property="texte">
+                       <void property="description">
+                        <string>Sganarelle se lance sur Martine...</string>
+                       </void>
+                       <void property="personnage">
+                        <string>SGANARELLE</string>
+                       </void>
+                       <void property="x">
+                        <int>220</int>
+                       </void>
+                       <void property="y">
+                        <int>100</int>
+                       </void>
+                      </object>
+                 </void>
+				 <void method="add">
+                      <object class="fr.licornesduswag.hcode.data.ActionDeplacement">
+                       <void property="description">
+                        <string>Martine chute...</string>
+                       </void>
+                       <void property="personnage">
+                        <string>Martine</string>
+                       </void>
+                       <void property="x">
+                        <int>500</int>
+                       </void>
+                       <void property="y">
+                        <int>100</int>
+                       </void>
+                      </object>
+                 </void>
+				 <void method="add">
+                        <object class="fr.licornesduswag.hcode.data.Texte">
+                        <void property="texte">
                         <string>Ah! ah, ah, ah!</string>
                        </void>
                       </object>
