@@ -61,7 +61,7 @@ public class Main extends BasicGame {
 	
 	
 	Personnage sganarelle = new Personnage("SGANARELLE", "SganarelleFace.png", "");
-	Personnage martine = new Personnage("MARTINE", "LucindeFace.png", "");
+	Personnage martine = new Personnage("MARTINE", "MartineFace.png", "");
 	
 	Personnage persoCourrant = sganarelle;
 	
