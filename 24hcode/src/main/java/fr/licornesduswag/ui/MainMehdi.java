@@ -86,7 +86,7 @@ public class MainMehdi extends BasicGame {
 	Keyboard k = null;
 	boolean test;
 	boolean piece;
-	boolean transition;
+	boolean transition = true;
 	boolean easterEgg;
 	ImageStore is = new ImageStore();
 	Object elem;
@@ -228,6 +228,7 @@ public class MainMehdi extends BasicGame {
 				Music baton = new Music("Ressources/coups.ogg");
 
 				baton.play();
+				
 			}
 			else if(k.keyDown() && !test){
 				if(it.hasNext()){
@@ -248,6 +249,8 @@ public class MainMehdi extends BasicGame {
 						case("fr.licornesduswag.hcode.data.Scene"):
 							Music applause = new Music("Ressources/Applause.ogg");
 						applause.play();
+						Music fond = new Music("Ressources/pokemon.ogg");
+						fond.play();
 							Scene s = (Scene)elem;
 						scene = s.getNumero();
 						str = "Scène " + scene;
@@ -330,16 +333,16 @@ public class MainMehdi extends BasicGame {
 
 	@Override
 	public void render(GameContainer gc, Graphics grphcs) throws SlickException {
-
-		grphcs.drawAnimation(spriteSheets.get(Piece.toutLesPersonnagesDuMonde.
-				get("martine"))[direction + (moving ? 4 : 0)], Piece.toutLesPersonnagesDuMonde.
-				get("martine").getxMap()-16, Piece.toutLesPersonnagesDuMonde.
-				get("martine").getyMap()-30);
-		grphcs.drawAnimation(spriteSheets.get(Piece.toutLesPersonnagesDuMonde.
-				get("sganarelle"))[direction + (moving ? 4 : 0)], Piece.toutLesPersonnagesDuMonde.
-				get("sganarelle").getxMap()-16, Piece.toutLesPersonnagesDuMonde.
-				get("sganarelle").getyMap()-100);
-
+		if(piece && !transition){
+			grphcs.drawAnimation(spriteSheets.get(Piece.toutLesPersonnagesDuMonde.
+					get("martine"))[direction + (moving ? 4 : 0)], Piece.toutLesPersonnagesDuMonde.
+					get("martine").getxMap()-16, Piece.toutLesPersonnagesDuMonde.
+					get("martine").getyMap()-30);
+			grphcs.drawAnimation(spriteSheets.get(Piece.toutLesPersonnagesDuMonde.
+					get("sganarelle"))[direction + (moving ? 4 : 0)], Piece.toutLesPersonnagesDuMonde.
+					get("sganarelle").getxMap()-16, Piece.toutLesPersonnagesDuMonde.
+					get("sganarelle").getyMap()-100);
+		}
 		if(easterEgg){
 			Image img = new Image("Ressources/Images/Unicorn.jpg");
 			img.draw();
