@@ -380,7 +380,7 @@ public class MainMehdi extends BasicGame {
 				if(lines != null){
 					AffichageTexte.affiche(lines, grphcs);
 				}
-				grphcs.drawImage(new SpriteSheet(new Image("../sprites/Medecin_malgre_lui/persos/"+persoCourrant.getSprite_face()), 96, 96)
+				grphcs.drawImage(new SpriteSheet(new Image("../sprites/Medecin_malgre_lui/Persos/"+persoCourrant.getSprite_face()), 96, 96)
 						.getSprite(Math.random() < 0.5 ? persoCourrant.getX1() : persoCourrant.getX2(), persoCourrant.getY()), 704, 504);
 			}
 		}

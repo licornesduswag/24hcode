@@ -114,17 +114,12 @@ public class Main {
         repliques.add(new Replique());
         dial= new Dialogue(repliques, personnages);
         System.out.println(piece);
-        
-        
-        
-        
-        
-        
+       
         //Serializer
         Serializer serial = new Serializer(piece);
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         try {
-			serial.toZip("test.zip","../sprites/Medecin malgre lui/Persos/");
+			serial.toZip("romeo.zip","../sprites/Romeo & Juliette/");
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
