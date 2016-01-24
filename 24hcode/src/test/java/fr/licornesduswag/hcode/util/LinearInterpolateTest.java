@@ -24,6 +24,10 @@
 package fr.licornesduswag.hcode.util;
 
 import org.junit.Test;
+
+import fr.licornesduswag.hcode.utils.LinearInterpolate;
+import fr.licornesduswag.hcode.utils.Point;
+
 import static org.junit.Assert.*;
 
 /**

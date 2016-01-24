@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-package fr.licornesduswag.hcode.util;
+package fr.licornesduswag.hcode.utils;
 
 /**
  *
