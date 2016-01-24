@@ -252,8 +252,8 @@ public class MainMehdi extends BasicGame {
 						case("fr.licornesduswag.hcode.data.Scene"):
 							Music applause = new Music("Ressources/Applause.ogg");
 						applause.play();
-						Music fond = new Music("Ressources/pokemon.ogg");
-						fond.play();
+						/*Music fond = new Music("Ressources/pokemon.ogg");
+						fond.play();*/
 							Scene s = (Scene)elem;
 						scene = s.getNumero();
 						str = "Scène " + scene;
@@ -369,7 +369,7 @@ public class MainMehdi extends BasicGame {
 				grphcs.drawAnimation(spriteSheets.get(Piece.toutLesPersonnagesDuMonde.
 						get("sganarelle"))[direction + (moving ? 4 : 0)], Piece.toutLesPersonnagesDuMonde.
 						get("sganarelle").getxMap()-16, Piece.toutLesPersonnagesDuMonde.
-						get("sganarelle").getyMap()-100);
+						get("sganarelle").getyMap()-30);
 				grphcs.setColor(Color.black);
 				grphcs.drawString("Acte " + acte+"/"+nbActe, 10, 10);
 				grphcs.drawString("Scene " + scene+"/"+nbScene, 710, 10);
