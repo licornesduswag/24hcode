@@ -66,7 +66,7 @@ public class MainMehdi extends BasicGame {
 	 * Les personnages de Medecin malgres lui avec leur sprites associées
 	 */
 	Personnage sganarelle = new Personnage("SGANARELLE", "SganarelleFace.png", "", 0, 2, 0);
-	Personnage martine = new Personnage("MARTINE", "MartineFace.png", "",0, 2, 1 );
+	Personnage martine = new Personnage("MARTINE", "JacquelineFace.png", "",0, 2, 1 );
 	Personnage robert = new Personnage("M. ROBERT", "RobertFace.png", "", 1, 2, 0);
 	Personnage valere = new Personnage("VALÈRE", "ValereFace.png", "",0, 3, 0 );
 	Personnage lucas = new Personnage("LUCAS", "LucasFace.png", "", 0, 2, 0);
@@ -128,7 +128,7 @@ public class MainMehdi extends BasicGame {
 			InputStream inputStream	= ResourceLoader.getResourceAsStream("Ressources/Fonts/paper.ttf");
 			//new Serializer().fromZip("Ressources/piece.zip", is);
 
-			p=new Serializer().fromZip("Ressources/piece_actions.zip", is).getPiece();
+			p=new Serializer().fromZip("Ressources/pieceactions.zip", is).getPiece();
 			nbActe= p.getActes().size();
 			pg = new PieceGenerator(p);
 			it = pg.iterator();
@@ -142,7 +142,7 @@ public class MainMehdi extends BasicGame {
 		}
 
 		Piece.toutLesPersonnagesDuMonde = new HashMap<>();
-		Personnage martine = new Personnage("martine", "MartineChar",-20,100);
+		Personnage martine = new Personnage("martine", "JacquelineChar",-20,100);
 		Personnage sgana = new Personnage("sganarelle", "SganarelleChar",-50,100
 				);
 
