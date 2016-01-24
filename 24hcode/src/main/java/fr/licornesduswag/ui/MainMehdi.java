@@ -142,8 +142,9 @@ public class MainMehdi extends BasicGame {
 		}
 
 		Piece.toutLesPersonnagesDuMonde = new HashMap<>();
-		Personnage martine = new Personnage("martine", "MartineChar",200,300);
-		Personnage sgana = new Personnage("sganarelle", "SganarelleChar",100,500);
+		Personnage martine = new Personnage("martine", "MartineChar",-20,100);
+		Personnage sgana = new Personnage("sganarelle", "SganarelleChar",-50,100
+				);
 
 		Piece.toutLesPersonnagesDuMonde.put("martine", martine);
 		Piece.toutLesPersonnagesDuMonde.put("sganarelle", sgana);
