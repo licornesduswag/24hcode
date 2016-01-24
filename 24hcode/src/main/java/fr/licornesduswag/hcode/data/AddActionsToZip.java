@@ -61,5 +61,4 @@ public class AddActionsToZip {
             Logger.getLogger(AddActionsToZip.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
 }
