@@ -56,4 +56,15 @@ public class LinearInterpolateTest {
         assertEquals(result100.getY(), b.getY());
     }
     
+    @Test
+    public void testNegativeInterpolate() {
+        Point a = new Point(-100, -100);
+        Point b = new Point(100, 100);
+        
+        Point result50 = LinearInterpolate.interpolate(a, b, 0.5);
+        
+        assertEquals(result50.getX(), 0);
+        assertEquals(result50.getY(), 0);
+    }
+    
 }
