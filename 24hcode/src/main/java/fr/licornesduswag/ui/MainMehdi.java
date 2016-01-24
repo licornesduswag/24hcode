@@ -227,6 +227,7 @@ public class MainMehdi extends BasicGame {
 				Music baton = new Music("Ressources/coups.ogg");
 
 				baton.play();
+				
 			}
 			else if(k.keyDown() && !test){
 				if(it.hasNext()){
@@ -247,6 +248,8 @@ public class MainMehdi extends BasicGame {
 						case("fr.licornesduswag.hcode.data.Scene"):
 							Music applause = new Music("Ressources/Applause.ogg");
 						applause.play();
+						Music fond = new Music("Ressources/pokemon.ogg");
+						fond.play();
 							Scene s = (Scene)elem;
 						scene = s.getNumero();
 						str = "Scène " + scene;
