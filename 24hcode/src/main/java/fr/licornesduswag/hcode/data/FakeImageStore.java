@@ -24,44 +24,17 @@
 
 package fr.licornesduswag.hcode.data;
 
-import java.io.Serializable;
+import java.io.InputStream;
 
 /**
- * Une action pendant la pièce
+ *
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public class Action extends Contenu implements Serializable {
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private String description;
-    
-    // Constructeurs
-
-    public Action() {
-    }
-    
-    
-
-    public Action(String description) {
-        this.description = description;
-    }
-    
-    // Getters & setters
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+public class FakeImageStore implements ImageStoreInterface {
 
     @Override
-    public String toString() {
-        return "Action{" + "description=" + description + '}';
+    public void addImage(String nom, InputStream is) {
+        System.out.println("FakeImageStore addImage " + nom);
     }
-    
-    
+
 }

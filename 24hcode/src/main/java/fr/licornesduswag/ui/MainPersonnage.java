@@ -64,6 +64,7 @@ public class MainPersonnage extends BasicGame {
     	g.setColor(new Color(0, 0, 0, .5f));
         g.fillOval(x - 8, y - 4, 16, 8);
     	g.drawAnimation(animations[direction + (moving ? 4 : 0)], x-16, y-30);
+    	
     }
 
     @Override

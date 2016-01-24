@@ -22,45 +22,34 @@
  * THE SOFTWARE.
  */
 
-package fr.licornesduswag.hcode.data;
-
-import java.io.Serializable;
+package fr.licornesduswag.hcode.util;
 
 /**
- * Une action pendant la pièce
+ *
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public class Action extends Contenu implements Serializable {
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private String description;
-    
-    // Constructeurs
+public class Point {
+    private int x, y;
 
-    public Action() {
-    }
-    
-    
-
-    public Action(String description) {
-        this.description = description;
-    }
-    
-    // Getters & setters
-
-    public String getDescription() {
-        return description;
+    public Point(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public int getX() {
+        return x;
     }
 
-    @Override
-    public String toString() {
-        return "Action{" + "description=" + description + '}';
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
     
     

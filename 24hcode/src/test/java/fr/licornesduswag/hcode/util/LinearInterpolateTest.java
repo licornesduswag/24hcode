@@ -21,47 +21,39 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+package fr.licornesduswag.hcode.util;
 
-package fr.licornesduswag.hcode.data;
-
-import java.io.Serializable;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
- * Une action pendant la pièce
+ *
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public class Action extends Contenu implements Serializable {
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private String description;
+public class LinearInterpolateTest {
     
-    // Constructeurs
-
-    public Action() {
-    }
-    
-    
-
-    public Action(String description) {
-        this.description = description;
-    }
-    
-    // Getters & setters
-
-    public String getDescription() {
-        return description;
+    public LinearInterpolateTest() {
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    @Test
+    public void testInterpolate() {
+        Point a = new Point(100, 100);
+        Point b = new Point(0, 0);
+        
+        Point result0 = LinearInterpolate.interpolate(a, b, 0);
+        
+        assertEquals(result0.getX(), a.getX());
+        assertEquals(result0.getY(), a.getY());
+        
+        Point result50 = LinearInterpolate.interpolate(a, b, 0.5);
+        
+        assertEquals(result50.getX(), 50);
+        assertEquals(result50.getY(), 50);
+        
+        Point result100 = LinearInterpolate.interpolate(a, b, 1);
+        
+        assertEquals(result100.getX(), b.getX());
+        assertEquals(result100.getY(), b.getY());
     }
-
-    @Override
-    public String toString() {
-        return "Action{" + "description=" + description + '}';
-    }
-    
     
 }

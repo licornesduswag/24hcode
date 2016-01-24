@@ -22,46 +22,16 @@
  * THE SOFTWARE.
  */
 
-package fr.licornesduswag.hcode.data;
-
-import java.io.Serializable;
+package fr.licornesduswag.hcode.util;
 
 /**
- * Une action pendant la pièce
+ *
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public class Action extends Contenu implements Serializable {
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private String description;
-    
-    // Constructeurs
-
-    public Action() {
+public class LinearInterpolate {
+    public static Point interpolate(Point from, Point to, double perc) {
+        return new Point(
+                from.getX() + (int)(perc * (to.getX() - from.getX())),
+                from.getY() + (int)(perc * (to.getY() - from.getY())));
     }
-    
-    
-
-    public Action(String description) {
-        this.description = description;
-    }
-    
-    // Getters & setters
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    @Override
-    public String toString() {
-        return "Action{" + "description=" + description + '}';
-    }
-    
-    
 }
