@@ -60,18 +60,25 @@ import fr.licornesduswag.hcode.utils.StringSeparator;
 public class Main extends BasicGame {
 	
 	
-	Personnage sganarelle = new Personnage("SGANARELLE", "SganarelleFace.png", "");
-	Personnage martine = new Personnage("MARTINE", "MartineFace.png", "");
+	/*
+	 * Les personnages de Medecin malgres lui avec leur sprites associées
+	 */
+	Personnage sganarelle = new Personnage("SGANARELLE", "SganarelleFace.png", "", 0, 2, 0);
+	Personnage martine = new Personnage("MARTINE", "MartineFace.png", "",0, 2, 1 );
+	Personnage robert = new Personnage("M. ROBERT", "RobertFace.png", "", 1, 2, 0);
+	Personnage valere = new Personnage("VALÈRE", "ValereFace.png", "",0, 3, 0 );
+	Personnage lucas = new Personnage("LUCAS", "LucasFace.png", "", 0, 2, 0);
+	Personnage geronte = new Personnage("GÉRONTE", "GeronteFace.png", "", 1, 2, 0);
+	Personnage jacqueline = new Personnage("JACQUELINE", "JacquelineFace.png", "", 2, 3, 0);
+	Personnage lucinde = new Personnage("LUCINDE", "LucindeFace.png", "", 0, 1, 1);
+	Personnage leandre = new Personnage("LÉANDRE", "LeandreFace.png", "", 1, 2, 0);
+	Personnage thibault = new Personnage("THIBAULT", "ThibaultFace.png", "", 1, 2, 0);
+	Personnage perrin = new Personnage("PERRIN", "PerrinFace.png", "", 1, 2, 0);
 	
+	/*
+	 * Le personnage courant, celui qui parle
+	 */
 	Personnage persoCourrant = sganarelle;
-	
-	/*Personnage robert = new Personnage("M. ROBERT", "", "");
-	Personnage valere = new Personnage("VALÈRE", "", "");
-	Personnage lucas = new Personnage("LUCAS", "", "");
-	Personnage geronte = new Personnage("GÉRONTE", "", "");
-	Personnage jacqueline = new Personnage("JACQUELINE", "", "");
-	*/
-	
 	
 	TrueTypeFont font;
 	Keyboard k = null;
@@ -152,12 +159,49 @@ public class Main extends BasicGame {
 							persoCourrant = sganarelle;
 						}
 						
+						switch (r.getParleur()) {
+						case "MARTINE":
+							persoCourrant = martine;
+							break;
+						case "SGANARELLE":
+							persoCourrant = sganarelle;
+							break;
+						case "M. ROBERT":
+							persoCourrant = robert;
+							break;
+						case "VALÈRE": 
+							persoCourrant = valere;
+							break;
+						case "LUCAS":
+							persoCourrant = lucas;
+							break;
+						case "GÉRONTE":
+							persoCourrant = geronte;
+							break;
+						case "JACQUELINE" :
+							persoCourrant = jacqueline;
+							break;
+						case "LUCINDE":
+							persoCourrant = lucinde;
+							break;
+						case "LÉANDRE":
+							persoCourrant = leandre;
+							break;
+						case "THIBAUT":
+							persoCourrant = thibault;
+							break;
+						case "PERRIN":
+							persoCourrant = perrin;
+							break;
+						default:
+							break;
+						}
+						
 						for (Contenu c : r.getContenu()){
 							if(c.getClass().getName().equals("fr.licornesduswag.hcode.data.Texte")){
 								
 								Texte t = (Texte) c;
 								str += (t.getTexte() + " ");
-								System.out.println(str);
 							}
 							else{
 								Action act = (Action)c;
@@ -224,7 +268,7 @@ public class Main extends BasicGame {
 //				}
 				grphcs.fillRect(0, 450,800, 150);
 				grphcs.setColor(Color.black);
-				grphcs.drawImage(new SpriteSheet(new Image("../sprites/Medecin malgre lui/persos/"+persoCourrant.getSprite_face()), 96, 96).getSprite(Math.random() < 0.5 ? 0 : 1, 1), 704, 504);
+				grphcs.drawImage(new SpriteSheet(new Image("../sprites/Medecin malgre lui/persos/"+persoCourrant.getSprite_face()), 96, 96).getSprite(Math.random() < 0.5 ? persoCourrant.getX1() : persoCourrant.getX2(), persoCourrant.getY()), 704, 504);
 				grphcs.drawString(StringSeparator.separeString(str, 85), 10, 455);
 			}
 		}
