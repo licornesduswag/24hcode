@@ -35,6 +35,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.util.ResourceLoader;
 
@@ -43,6 +44,8 @@ import fr.licornesduswag.hcode.data.Acte;
 import fr.licornesduswag.hcode.data.Action;
 import fr.licornesduswag.hcode.data.Contenu;
 import fr.licornesduswag.hcode.data.ImageStore;
+import fr.licornesduswag.hcode.data.Personnage;
+import fr.licornesduswag.hcode.data.Piece;
 import fr.licornesduswag.hcode.data.PieceGenerator;
 import fr.licornesduswag.hcode.data.Replique;
 import fr.licornesduswag.hcode.data.Scene;
@@ -55,6 +58,28 @@ import fr.licornesduswag.hcode.utils.StringSeparator;
  * @author Maximusk
  */
 public class Main extends BasicGame {
+	
+	
+	/*
+	 * Les personnages de Medecin malgres lui avec leur sprites associées
+	 */
+	Personnage sganarelle = new Personnage("SGANARELLE", "SganarelleFace.png", "", 0, 2, 0);
+	Personnage martine = new Personnage("MARTINE", "MartineFace.png", "",0, 2, 1 );
+	Personnage robert = new Personnage("M. ROBERT", "RobertFace.png", "", 1, 2, 0);
+	Personnage valere = new Personnage("VALÈRE", "ValereFace.png", "",0, 3, 0 );
+	Personnage lucas = new Personnage("LUCAS", "LucasFace.png", "", 0, 2, 0);
+	Personnage geronte = new Personnage("GÉRONTE", "GeronteFace.png", "", 1, 2, 0);
+	Personnage jacqueline = new Personnage("JACQUELINE", "JacquelineFace.png", "", 2, 3, 0);
+	Personnage lucinde = new Personnage("LUCINDE", "LucindeFace.png", "", 0, 1, 1);
+	Personnage leandre = new Personnage("LÉANDRE", "LeandreFace.png", "", 1, 2, 0);
+	Personnage thibault = new Personnage("THIBAULT", "ThibaultFace.png", "", 1, 2, 0);
+	Personnage perrin = new Personnage("PERRIN", "PerrinFace.png", "", 1, 2, 0);
+	
+	/*
+	 * Le personnage courant, celui qui parle
+	 */
+	Personnage persoCourrant = sganarelle;
+	
 	TrueTypeFont font;
 	Keyboard k = null;
 	boolean test;
@@ -66,8 +91,14 @@ public class Main extends BasicGame {
 	String str = "";
 	int acte;
 	int scene;
-	PieceGenerator pg = new PieceGenerator(PieceLoader.load("../pieces/html/medecinMalgresLui.xml"));
-	Iterator it = pg.iterator();
+	
+	
+	Piece p = PieceLoader.load("../pieces/html/medecinMalgresLui.xml");
+	int nbActe = p.getActes().size();
+	int nbScene;
+	
+	PieceGenerator pg = new PieceGenerator(p);
+	Iterator<Object> it = pg.iterator();
 	public Main() {
 		super("24hcode");
 	}
@@ -106,6 +137,7 @@ public class Main extends BasicGame {
 						str = "Acte " + a.getNumero();
 						transition = true;
 						acte = a.getNumero();
+						nbScene = a.getScenes().size();
 					break;
 					case("fr.licornesduswag.hcode.data.Scene"):
 						Scene s = (Scene)elem;
@@ -113,12 +145,61 @@ public class Main extends BasicGame {
 						str = "Scène " + scene;
 						transition = true;
 						
+						
 					break;
 					case("fr.licornesduswag.hcode.data.Replique"):
+						
 						Replique r = (Replique)elem;
 						str = r.getParleur() + " : ";
+						if(r.getParleur().equals("MARTINE")){
+							persoCourrant = martine;
+						}else if(r.getParleur().equals("SGANARELLE")){
+							persoCourrant = sganarelle;
+						}else{
+							persoCourrant = sganarelle;
+						}
+						
+						switch (r.getParleur()) {
+						case "MARTINE":
+							persoCourrant = martine;
+							break;
+						case "SGANARELLE":
+							persoCourrant = sganarelle;
+							break;
+						case "M. ROBERT":
+							persoCourrant = robert;
+							break;
+						case "VALÈRE": 
+							persoCourrant = valere;
+							break;
+						case "LUCAS":
+							persoCourrant = lucas;
+							break;
+						case "GÉRONTE":
+							persoCourrant = geronte;
+							break;
+						case "JACQUELINE" :
+							persoCourrant = jacqueline;
+							break;
+						case "LUCINDE":
+							persoCourrant = lucinde;
+							break;
+						case "LÉANDRE":
+							persoCourrant = leandre;
+							break;
+						case "THIBAUT":
+							persoCourrant = thibault;
+							break;
+						case "PERRIN":
+							persoCourrant = perrin;
+							break;
+						default:
+							break;
+						}
+						
 						for (Contenu c : r.getContenu()){
 							if(c.getClass().getName().equals("fr.licornesduswag.hcode.data.Texte")){
+								
 								Texte t = (Texte) c;
 								str += (t.getTexte() + " ");
 							}
@@ -175,15 +256,27 @@ public class Main extends BasicGame {
 				}
 				grphcs.setBackground(Color.lightGray);
 				grphcs.setColor(Color.black);
-				grphcs.drawString("Acte " + acte, 10, 10);
-				grphcs.drawString("Scene " + scene, 710, 10);
+				
+				grphcs.drawString("Acte " + acte+"/"+nbActe, 10, 10);
+				grphcs.drawString("Scene " + scene+"/"+nbScene, 710, 10);
+				grphcs.setColor(Color.white);
+				
+				
+//				Image fg = is.getImage(acte+"_"+scene+"_fg.png");
+//				if(!(fg == null)){
+//					fg.draw();
+//				}
+				grphcs.fillRect(0, 450,800, 150);
 				grphcs.setColor(Color.black);
-				grphcs.drawString(StringSeparator.separeString(str, 85), 10, 48);
-				Image fg = is.getImage(acte+"_"+scene+"_fg.png");
-				if(!(fg == null)){
-					fg.draw();
-				}
+				grphcs.drawImage(new SpriteSheet(new Image("../sprites/Medecin malgre lui/persos/"+persoCourrant.getSprite_face()), 96, 96).getSprite(Math.random() < 0.5 ? persoCourrant.getX1() : persoCourrant.getX2(), persoCourrant.getY()), 704, 504);
+				grphcs.drawString(StringSeparator.separeString(str, 85), 10, 455);
 			}
+		}
+		try {
+			Thread.sleep(100);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
