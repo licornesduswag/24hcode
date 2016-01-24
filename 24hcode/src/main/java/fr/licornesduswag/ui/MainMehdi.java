@@ -210,6 +210,9 @@ public class MainMehdi extends BasicGame {
 				{
 					toutLesDeplacementsDuMonde.remove(0);
 					p.setCurrentPerc(0);
+					p.setPoseDeBaseX((int)p.getxMap());
+					p.setPoseDeBaseY((int)p.getyMap());
+					
 				}
 			}
 			//toutLesDeplacementsDuMonde.remove(0);
@@ -332,23 +335,14 @@ public class MainMehdi extends BasicGame {
 
 	@Override
 	public void render(GameContainer gc, Graphics grphcs) throws SlickException {
-		if(piece && !transition){
-			grphcs.drawAnimation(spriteSheets.get(Piece.toutLesPersonnagesDuMonde.
-					get("martine"))[direction + (moving ? 4 : 0)], Piece.toutLesPersonnagesDuMonde.
-					get("martine").getxMap()-16, Piece.toutLesPersonnagesDuMonde.
-					get("martine").getyMap()-30);
-			grphcs.drawAnimation(spriteSheets.get(Piece.toutLesPersonnagesDuMonde.
-					get("sganarelle"))[direction + (moving ? 4 : 0)], Piece.toutLesPersonnagesDuMonde.
-					get("sganarelle").getxMap()-16, Piece.toutLesPersonnagesDuMonde.
-					get("sganarelle").getyMap()-100);
-		}
+		
 		if(easterEgg){
 			Image img = new Image("Ressources/Images/Unicorn.jpg");
 			img.draw();
 		}
 		else{
 			if(!piece){
-				grphcs.setBackground(Color.darkGray);
+				grphcs.setBackground(Color.black);
 				grphcs.setColor(Color.white);
 				grphcs.setFont(font);
 				grphcs.drawString("24h du code", 350, 100);
@@ -361,11 +355,20 @@ public class MainMehdi extends BasicGame {
 				grphcs.drawString(str, 365, 250);
 			}
 			else{
+				
+				grphcs.setBackground(Color.lightGray);
 				Image bg = is.getImage(acte+"_"+scene+"_bg.jpg");
 				if(!(bg == null)){
 					bg.draw();
 				}
-				grphcs.setBackground(Color.lightGray);
+				grphcs.drawAnimation(spriteSheets.get(Piece.toutLesPersonnagesDuMonde.
+						get("martine"))[direction + (moving ? 4 : 0)], Piece.toutLesPersonnagesDuMonde.
+						get("martine").getxMap()-16, Piece.toutLesPersonnagesDuMonde.
+						get("martine").getyMap()-30);
+				grphcs.drawAnimation(spriteSheets.get(Piece.toutLesPersonnagesDuMonde.
+						get("sganarelle"))[direction + (moving ? 4 : 0)], Piece.toutLesPersonnagesDuMonde.
+						get("sganarelle").getxMap()-16, Piece.toutLesPersonnagesDuMonde.
+						get("sganarelle").getyMap()-100);
 				grphcs.setColor(Color.black);
 				grphcs.drawString("Acte " + acte+"/"+nbActe, 10, 10);
 				grphcs.drawString("Scene " + scene+"/"+nbScene, 710, 10);
