@@ -1,4 +1,4 @@
-/*
+﻿/*
  * The MIT License
  *
  * Copyright 2016 Romain Porte (MicroJoe) microjoe at mailoo.org.
@@ -73,10 +73,14 @@ public class ActionDeplacement extends Action implements Serializable {
         this.personnageName = personnage;
     }
 
-    @Override
-    public String toString() {
-        return "ActionDeplacement{" + "x=" + x + ", y=" + y + ", personnageName=" + personnageName + '}';
-    }
+
+	@Override
+	public String toString() {
+		super.toString();
+		return "ActionDeplacement [x=" + x + ", y=" + y + ", personnageName=" + personnageName + "]";
+	}
+    
+
     
     
 }
