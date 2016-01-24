@@ -156,7 +156,7 @@ public class MainMehdi extends BasicGame {
 
 		for(int i =0; i<Piece.toutLesPersonnagesDuMonde.size(); i++)
 		{
-			SpriteSheet spriteSheet = new SpriteSheet("../sprites/Medecin malgre lui/Persos/"+ p.getPersonnages().get(i).getSprite_aventure() +".png", 32, 32);
+			SpriteSheet spriteSheet = new SpriteSheet("../sprites/Medecin_malgre_lui/Persos/"+ p.getPersonnages().get(i).getSprite_aventure() +".png", 32, 32);
 			Animation[] animations = new Animation[8];
 			for(int j=0; j<8; j++)
 			{
@@ -383,7 +383,7 @@ public class MainMehdi extends BasicGame {
 				if(lines != null){
 					AffichageTexte.affiche(lines, grphcs);
 				}
-				grphcs.drawImage(new SpriteSheet(new Image("../sprites/Medecin malgre lui/persos/"+persoCourrant.getSprite_face()), 96, 96)
+				grphcs.drawImage(new SpriteSheet(new Image("../sprites/Medecin_malgre_lui/persos/"+persoCourrant.getSprite_face()), 96, 96)
 						.getSprite(Math.random() < 0.5 ? persoCourrant.getX1() : persoCourrant.getX2(), persoCourrant.getY()), 704, 504);
 			}
 		}
