@@ -19,6 +19,14 @@ public class Personnage implements Serializable{
 	private int x2;
 	private int y;
 	
+	private float xMap;
+	private float yMap;
+	private int poseDeBaseX=0;
+	private int poseDeBaseY=0;
+	private double currentPerc=0;
+	
+	
+	
 	/**
 	 * 
 	 * @param nom
@@ -36,6 +44,30 @@ public class Personnage implements Serializable{
 		this.x1 = x1;
 		this.x2 = x2;
 		this.y = y;
+	}
+	
+	/**
+	 * supersuper important
+	 * @param nom
+	 * @param sprite_aventure
+	 * @param xMap
+	 * @param yMap
+	 */
+	public Personnage(String nom, String sprite_aventure, int xMap, int yMap) {
+		super();
+		this.nom = nom;
+		this.sprite_aventure = sprite_aventure;
+		this.poseDeBaseX = xMap;
+		this.poseDeBaseY = yMap;
+		this.xMap = xMap;
+		this.yMap = yMap;
+	}
+	
+	public Personnage(String nom, String sprite_face, String sprite_aventure) {
+		super();
+		this.nom = nom;
+		this.sprite_face = sprite_face;
+		this.sprite_aventure = sprite_aventure;
 	}
 	
 	
@@ -73,12 +105,7 @@ public class Personnage implements Serializable{
 	public void setY(int y) {
 		this.y = y;
 	}
-	public Personnage(String nom, String sprite_face, String sprite_aventure) {
-		super();
-		this.nom = nom;
-		this.sprite_face = sprite_face;
-		this.sprite_aventure = sprite_aventure;
-	}
+	
 	public Personnage() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -101,6 +128,86 @@ public class Personnage implements Serializable{
 	public void setSprite_aventure(String sprite_aventure) {
 		this.sprite_aventure = sprite_aventure;
 	}
+	/**
+	 * @return the xMap
+	 */
+	public float getxMap() {
+		return xMap;
+	}
+
+
+	/**
+	 * @param xMap the xMap to set
+	 */
+	public void setxMap(float xMap) {
+		this.xMap = xMap;
+	}
+
+
+	/**
+	 * @return the yMap
+	 */
+	public float getyMap() {
+		return yMap;
+	}
+
+
+	/**
+	 * @param yMap the yMap to set
+	 */
+	public void setyMap(float yMap) {
+		this.yMap = yMap;
+	}
+
+
+	/**
+	 * @return the poseDeBaseX
+	 */
+	public int getPoseDeBaseX() {
+		return poseDeBaseX;
+	}
+
+
+	/**
+	 * @param poseDeBaseX the poseDeBaseX to set
+	 */
+	public void setPoseDeBaseX(int poseDeBaseX) {
+		this.poseDeBaseX = poseDeBaseX;
+	}
+
+
+	/**
+	 * @return the poseDeBaseY
+	 */
+	public int getPoseDeBaseY() {
+		return poseDeBaseY;
+	}
+
+
+	/**
+	 * @param poseDeBaseY the poseDeBaseY to set
+	 */
+	public void setPoseDeBaseY(int poseDeBaseY) {
+		this.poseDeBaseY = poseDeBaseY;
+	}
+
+
+	/**
+	 * @return the currentPerc
+	 */
+	public double getCurrentPerc() {
+		return currentPerc;
+	}
+
+
+	/**
+	 * @param currentPerc the currentPerc to set
+	 */
+	public void setCurrentPerc(double currentPerc) {
+		this.currentPerc = currentPerc;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Personnage [nom=" + nom + ", sprite_face=" + sprite_face + ", sprite_aventure=" + sprite_aventure + "]";

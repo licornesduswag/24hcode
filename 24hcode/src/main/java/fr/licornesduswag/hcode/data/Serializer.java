@@ -29,6 +29,10 @@ import java.util.zip.ZipOutputStream;
 
 public class Serializer implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// Constantes
 	private static final int BUFFER_SIZE = 2048;
 	private static final String ZIP_XML_FILE = "piece.xml";
