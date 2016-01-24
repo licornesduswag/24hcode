@@ -252,8 +252,8 @@ public class MainMehdi extends BasicGame {
 						case("fr.licornesduswag.hcode.data.Scene"):
 							Music applause = new Music("Ressources/Applause.ogg");
 						applause.play();
-						/*Music fond = new Music("Ressources/pokemon.ogg");
-						fond.play();*/
+						Music fond = new Music("Ressources/pokemon.ogg");
+						fond.play();
 							Scene s = (Scene)elem;
 						scene = s.getNumero();
 						str = "Scène " + scene;
@@ -374,10 +374,7 @@ public class MainMehdi extends BasicGame {
 				grphcs.drawString("Acte " + acte+"/"+nbActe, 10, 10);
 				grphcs.drawString("Scene " + scene+"/"+nbScene, 710, 10);
 				grphcs.setColor(Color.white);
-				/*Image fg = is.getImage(acte+"_"+scene+"_fg.png");
-				if(!(fg == null)){
-					fg.draw();
-				}*/
+			
 				grphcs.fillRect(0, 450,800, 150);
 				grphcs.setColor(Color.black);
 				if(lines != null){
