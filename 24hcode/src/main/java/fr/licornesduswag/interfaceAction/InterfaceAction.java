@@ -136,7 +136,9 @@ public class InterfaceAction extends JFrame {
 		JButton btnAjouterpersonnage = new JButton("AjouterPersonnage");
 		btnAjouterpersonnage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Piece.toutLesPersonnagesDuMonde.put(nomNouveauPerso.getText(), new Personnage(nomNouveauPerso.getText(), ImagePersoSprite.getText(), imagePersonnageFace.getText()));
+				Personnage p = new Personnage(nomNouveauPerso.getText(), ImagePersoSprite.getText(), imagePersonnageFace.getText());
+				Piece.toutLesPersonnagesDuMonde.put(nomNouveauPerso.getText(), p);
+				Piece.personnages.add(p);
 			}
 		});
 		btnAjouterpersonnage.setBounds(79, 177, 135, 23);

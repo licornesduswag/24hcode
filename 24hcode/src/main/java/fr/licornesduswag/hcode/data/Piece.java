@@ -33,7 +33,7 @@ import java.util.HashMap;
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
 public class Piece implements Serializable{
-    /**
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
@@ -44,61 +44,61 @@ public class Piece implements Serializable{
 	}
 
 	private String nom;
-    
-    private ArrayList<Personnage> personnages;
-    static public HashMap<String, Personnage> toutLesPersonnagesDuMonde = new HashMap<>();
-    
-    private ArrayList<Acte> actes;
-    
-    // Constructeur
 
-    public Piece(String nom, ArrayList<Acte> actes, ArrayList<Personnage> personnages) {
-        this.nom = nom;
-        this.actes = actes;
-        this.personnages = personnages;
-        toutLesPersonnagesDuMonde = new HashMap<String,Personnage>();
-        for ( Personnage P : personnages)
-        {
-        	toutLesPersonnagesDuMonde.put(P.getNom(), P);
-        }
-    }
+	static public ArrayList<Personnage> personnages;
+	static public HashMap<String, Personnage> toutLesPersonnagesDuMonde = new HashMap<>();
 
-    public Piece(String nom) {
-        this.nom = nom;
-        this.actes = new ArrayList<>();
-        this.personnages = new ArrayList<>();
-    }
-    
-    // Getters & setters
+	private ArrayList<Acte> actes;
 
-    public ArrayList<Personnage> getPersonnages() {
+	// Constructeur
+
+	public Piece(String nom, ArrayList<Acte> actes, ArrayList<Personnage> personnages) {
+		this.nom = nom;
+		this.actes = actes;
+		Piece.personnages = personnages;
+		toutLesPersonnagesDuMonde = new HashMap<String,Personnage>();
+		for ( Personnage P : personnages)
+		{
+			toutLesPersonnagesDuMonde.put(P.getNom(), P);
+		}
+	}
+
+	public Piece(String nom) {
+		this.nom = nom;
+		this.actes = new ArrayList<>();
+		Piece.personnages = new ArrayList<>();
+	}
+
+	// Getters & setters
+
+	public ArrayList<Personnage> getPersonnages() {
 		return personnages;
 	}
 
 	public void setPersonnages(ArrayList<Personnage> personnages) {
-		this.personnages = personnages;
+		Piece.personnages = personnages;
 	}
 
 	public String getNom() {
-        return nom;
-    }
+		return nom;
+	}
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
 
-    public ArrayList<Acte> getActes() {
-        return actes;
-    }
+	public ArrayList<Acte> getActes() {
+		return actes;
+	}
 
-    public void setActes(ArrayList<Acte> actes) {
-        this.actes = actes;
-    }
+	public void setActes(ArrayList<Acte> actes) {
+		this.actes = actes;
+	}
 
-    @Override
+	@Override
 	public String toString() {
 		return "Piece [nom=" + nom + ", personnages=" + personnages + ", actes=" + actes + "]";
 	}
-    
-    
+
+
 }
