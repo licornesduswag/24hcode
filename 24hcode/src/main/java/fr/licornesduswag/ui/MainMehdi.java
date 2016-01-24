@@ -369,21 +369,18 @@ public class MainMehdi extends BasicGame {
 				grphcs.drawAnimation(spriteSheets.get(Piece.toutLesPersonnagesDuMonde.
 						get("sganarelle"))[direction + (moving ? 4 : 0)], Piece.toutLesPersonnagesDuMonde.
 						get("sganarelle").getxMap()-16, Piece.toutLesPersonnagesDuMonde.
-						get("sganarelle").getyMap()-100);
+						get("sganarelle").getyMap()-30);
 				grphcs.setColor(Color.black);
 				grphcs.drawString("Acte " + acte+"/"+nbActe, 10, 10);
 				grphcs.drawString("Scene " + scene+"/"+nbScene, 710, 10);
 				grphcs.setColor(Color.white);
-				/*Image fg = is.getImage(acte+"_"+scene+"_fg.png");
-				if(!(fg == null)){
-					fg.draw();
-				}*/
+			
 				grphcs.fillRect(0, 450,800, 150);
 				grphcs.setColor(Color.black);
 				if(lines != null){
 					AffichageTexte.affiche(lines, grphcs);
 				}
-				grphcs.drawImage(new SpriteSheet(new Image("../sprites/Medecin_malgre_lui/persos/"+persoCourrant.getSprite_face()), 96, 96)
+				grphcs.drawImage(new SpriteSheet(new Image("../sprites/Medecin_malgre_lui/Persos/"+persoCourrant.getSprite_face()), 96, 96)
 						.getSprite(Math.random() < 0.5 ? persoCourrant.getX1() : persoCourrant.getX2(), persoCourrant.getY()), 704, 504);
 			}
 		}
