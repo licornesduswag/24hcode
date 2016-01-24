@@ -1,4 +1,4 @@
-﻿/*
+ /*
  * The MIT License
  *
  * Copyright 2016 Romain Porte (MicroJoe) microjoe at mailoo.org.
