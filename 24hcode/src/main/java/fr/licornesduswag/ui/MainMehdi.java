@@ -86,7 +86,7 @@ public class MainMehdi extends BasicGame {
 	Keyboard k = null;
 	boolean test;
 	boolean piece;
-	boolean transition;
+	boolean transition = true;
 	boolean easterEgg;
 	ImageStore is = new ImageStore();
 	Object elem;
