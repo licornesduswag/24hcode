@@ -1011,8 +1011,8 @@
                   <object class="fr.licornesduswag.hcode.data.Replique">
                    <void property="contenu">
                     <object class="java.util.ArrayList">
-                     <void method="add">
-                      <object class="fr.licornesduswag.hcode.data.Texte">
+					 <void method="add">
+                      <object class="fr.licornesduswag.hcode.data.ActionDeplacement">
                        <void property="description">
                         <string>Sganarelle se lance sur Martine...</string>
                        </void>
@@ -1044,8 +1044,8 @@
                       </object>
                  </void>
 				 <void method="add">
-                        <object class="fr.licornesduswag.hcode.data.Texte">
-                        <void property="texte">
+                      <object class="fr.licornesduswag.hcode.data.Texte">
+                       <void property="texte">
                         <string>Ah! ah, ah, ah!</string>
                        </void>
                       </object>
